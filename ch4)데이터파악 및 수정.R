@@ -65,7 +65,7 @@ mpg_new <- mpg
 mpg_new
 
 #복사본 데이터 이용하여 cty는 city로, hwy는 highway로 변수명 수정
-library(dplyr)
+library(dplyr)#로드하는 부분 없어도 잘되긴함함
 mpg_new <- rename(mpg_new, city = cty, highway = hwy)
 
 #수정된 것 출력
