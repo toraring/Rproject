@@ -34,3 +34,39 @@ tail(mpg)#뒷부분 데이터확인
 View(mpg)#view형태로
 dim(mpg)#행렬 갯수확인
 str(mpg)#속성확인인
+
+#####
+#dplyr 패키지 설치 & 로드
+install.packages("dplyr")
+library(dplyr)
+
+#데이터 프레임 생성
+df_raw <- data.frame(var1 = c(1,2,1), var2 = c(2,3,2))
+df_raw
+
+#데이터 복사본
+  #중간에 수정하기 위함함
+  #원본은 raw 복사본은 new로 
+df_new <- df_raw
+df_new
+
+#변수명 바꾸기
+  #var2를 v2로 수정
+  #rename()은 새변수명 = 기존변수명 순으로 적을 것
+df_new <- rename(df_new, v2 = var2)
+df_new
+
+
+
+##실습
+#ggplot2 패키지의 mpg데이터를 사용할 수 있도록 불러와서 복사본 만들기
+mpg <- as.data.frame(ggplot2::mpg)
+mpg_new <- mpg
+mpg_new
+
+#복사본 데이터 이용하여 cty는 city로, hwy는 highway로 변수명 수정
+library(dplyr)
+mpg_new <- rename(mpg_new, city = cty, highway = hwy)
+
+#수정된 것 출력
+head(mpg_new)
