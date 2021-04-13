@@ -19,3 +19,24 @@ df_midterm
 #평균치 구해보기
 mean(df_midterm$history)
 mean(df_midterm$math)
+
+----
+#외부 데이터 불러오기
+#패키지 설치
+install.packages("readxl")
+#패키지 로드
+library(readxl)
+#엑셀파일 불러오기
+df_finalexam <- read_excel("finalexam.xlsx", sheet = 1, col_names = F)
+#화면 출력
+df_finalexam
+
+#평균치 구해보기
+mean(df_finalexam$history)
+mean(df_finalexam$math)
+mean(df_finalexam$english)
+---
+  
+#csv파일 불러오기
+  #바로 실행이 가능하다
+read.csv("csv_exam.csv", header = T)
