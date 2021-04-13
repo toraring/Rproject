@@ -35,8 +35,15 @@ df_finalexam
 mean(df_finalexam$history)
 mean(df_finalexam$math)
 mean(df_finalexam$english)
----
-  
+
+##############
 #csv파일 불러오기
   #바로 실행이 가능하다
 read.csv("csv_exam.csv", header = T)
+    #변수를 할당하지 않았음(df_)
+    #그래서 csv_가아닌 read로 불러야함
+
+
+#csv파일 저장하기
+write.csv(df_finalexam,file = "output_new")
+# 뒤에 output..은 임의로 정한 파일명
