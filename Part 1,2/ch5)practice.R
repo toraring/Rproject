@@ -29,7 +29,7 @@ mean(mpg_d$cty)
 mpg_new <- mpg %>% filter(manufacturer %in% c("chevrolet", "ford", "honda"))#3개중 하나를 쓸거면 %in%
 mean(mpg_new$hwy)
 ###
-#filter는 행을 select는 열을 추출
+#filter는 행을 select는 열을 추출?
 
 
 ###part 5-2
@@ -45,9 +45,13 @@ mpg_e <- mpg %>% select(class, cty)
 mpg_e
 
 #Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서class(자동차 종류)가 "suv"인 자동차와 "compact"인 자동차 중 어떤 자동차의 cty(도시 연비)가 더 높은지 알아보세요.
-df_suv <- df %>% filter(class == "suv") 
+
+#가독성을 위해 파이프 %>% 이후 엔터
+df_suv <- df %>%
+  filter(class == "suv") 
   # class 가 suv 인 행 추출
-df_compact <- df %>% filter(class == "compact") 
+df_compact <- df %>% 
+  filter(class == "compact") 
   # class 가 compact 인 행 추출
 mean(df_suv$cty) 
   # suv 의 cty 평균
@@ -55,5 +59,30 @@ mean(df_compact$cty)
   # compact 의 cty 평균
 
 #내가쓴거#
-mpg_suv <- mpg_e %>% select(class == "suv")
-mpg_com <- mpg_e %>% select(class == "compact")
+mpg_suv <- mpg_e %>%
+  select(class == "suv")
+mpg_com <- mpg_e %>% 
+  select(class == "compact")
+
+#####
+##part 5-3##
+#"audi"에서 생산한 자동차 중에 어떤 자동차 모델의 hwy(고속도로 연비)가 높은지 알아보려고 합니다. 
+#"audi"에서 생산한 자동차 중 hwy가 1~5위에 해당하는 자동차의 데이터를 출력하세요.
+mpg <- as.data.frame(ggplot2::mpg) 
+  # mpg 데이터 불러오기
+mpg %>% filter(manufacturer == "audi") %>% 
+    # audi 추출
+  arrange(desc(hwy)) %>% 
+    # hwy 내림차순 정렬
+  head(5)
+    # 5행까지 출력
+
+#내가 푼것#
+mpg <- as.data.frame(ggplot2::mpg)
+mpg_audi <- mpg %>% 
+  filter(manufacturer == "audi") %>% 
+  arrange(desc(mpg_audi$hwy)) %>% 
+    #mpg_audi는 중복된다
+  head(5)
+mpg_audi
+
