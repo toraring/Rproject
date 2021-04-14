@@ -86,3 +86,42 @@ mpg_audi <- mpg %>%
   head(5)
 mpg_audi
 
+###
+##part 5-4##
+#mpg 데이터는 연비를 나타내는 변수가 hwy(고속도로 연비), cty(도시 연비) 두 종류로 분리되어 있습니다. 두변수를 각각 활용하는 대신 하나의 통합 연비 변수를 만들어 분석하려고 합니다.
+#• Q1. mpg 데이터 복사본을 만들고, cty 와 hwy 를 더한 '합산 연비 변수'를 추가하세요.
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+mpg_new <- mpg # 복사본 만들기
+mpg_new <- mpg_new %>% mutate(total = cty + hwy) # 합산 변수 만들기
+
+#• Q2. 앞에서 만든 '합산 연비 변수'를 2 로 나눠 '평균 연비 변수'를 추가세요.
+mpg_new <- mpg_new %>% mutate(mean = total/2) # 평균 변수 만들기
+
+#• Q3. '평균 연비 변수'가 가장 높은 자동차 3 종의 데이터를 출력하세요.
+mpg_new %>%
+  arrange(desc(mean)) %>% # 내림차순 정렬
+  head(3) # 상위 3 행 출력
+
+#• Q4. 1~3 번 문제를 해결할 수 있는 하나로 연결된 dplyr 구문을 만들어 출력하세요. 데이터는 복사본 대신 mpg 원본을 이용하세요.
+mpg %>%
+  mutate(total = cty + hwy, # 합산 변수 만들기
+         mean = total/2) %>% # 평균 변수 만들기
+  arrange(desc(mean)) %>% # 내림차순 정렬
+  head(3) # 상위 3 행 출력
+
+#Q1-3은 파생변수를 이후에도 계속 사용할때 쓰임
+#Q4는 이번 한번만 변수쓸때 사용
+
+#내가 푼것
+mpg_new <- as.data.frame(ggplot2::mpg) 
+mpg_new %>% 
+  mutate(mpg_ch = cty + hwy, 
+         mpg_ch2 = mpg_ch/2) %>%
+  arrange(desc(mpg_ch2)) %>% 
+  head(3)
+
+library(dplyr)
+mpg_raw <- mpg_new  
+mpg_raw
+
+###
