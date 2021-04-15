@@ -39,10 +39,10 @@ seq_a
 
 # 5. 데이터의 크기 (5점)
 mpg <- as.data.frame(ggplot2::mpg)
-View(mpg)
+dim(mpg)
 
 diamonds <- as.data.frame(ggplot2::diamonds)
-View(diamonds)
+dim(diamonds)
 
 
 # 6. 변수들의 속성 (5점)
