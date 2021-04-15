@@ -22,6 +22,9 @@ mean(mpg_d$cty)
 
 #Q3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 합니다. 이 회사들의 자동차를 추출한 뒤 hwy 전체 평균을 구해보세요.
     #mpg_1 <-mpg %>% filter(manufacturer == "chevrolet")
+
+
+
     #mpg_2 <-mpg %>% filter(manufacturer == "ford")
     #mpg_3 <-mpg %>% filter(manufacturer == "honda")
     #mean(mpg_1$hwy + mpg_2$hwy + mpg_3$hwy)
@@ -174,3 +177,90 @@ mpg %>%
   group_by(manufacturer) %>% # manufacturer 별 분리
   summarise(count = n()) %>% # 빈도 구하기
   arrange(desc(count)) # 내림차순 정렬
+
+###part5-6
+#mpg 데이터의 fl 변수는 자동차에 사용하는 연료(fuel)를 의미합니다. 아래는 자동차 연료별 가격을 나타낸표입니다.
+fuel <- data.frame(fl = c("c", "d", "e", "p", "r"),
+                   price_fl = c(2.35, 2.38, 2.11, 2.76, 2.22),
+                   stringsAsFactors = F)
+fuel # 출력
+
+#• Q1. mpg 데이터에는 연료 종류를 나타낸 fl 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. 위에서 만든 fuel 데이터를 이용해서 mpg 데이터에 price_fl(연료 가격) 변수를 추가하세요.
+
+library(dplyr)
+mpg <- as.data.frame(ggplot2::mpg)
+View(mpg)
+mpg_price <- left_join(mpg, fuel, by = "fl")
+
+#답
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+mpg <- left_join(mpg, fuel, by = "fl") # mpg 에 연료 가격변수추가
+
+#• Q2. 연료 가격 변수가 잘 추가됐는지 확인하기 위해서 model, fl, price_fl 변수를 추출해 앞부분 5 행을 출력해보세요.
+mpg_pricePrint <- select(model, fl, price_fl) %>% 
+  head(5)
+
+#답
+mpg %>%
+  select(model, fl, price_fl) %>% # model, fl,price_fl 추출
+  head(5)
+
+
+###마무리 실습
+#미국 동북중부 437개 지역의 인구통계 정보를 담고 있는 midwest 데이터를 사용해 데이터 분석 문제를 해결해 보세요. midwest는 ggplot2 패키지에 들어 있습니다.
+library(ggplot2)
+library(dplyr)
+
+#• 문제 1. popadults 는 해당 지역의 성인 인구, poptotal 은 전체 인구를 나타냅니다. midwest 데이터에
+'전체 인구 대비 미성년 인구 백분율' #변수를 추가하세요.
+midwest <- as.data.frame(ggplot2::midwest)
+ratio_f <- midwest %>% 
+  mutate(popadults / poptotal * 100)
+ratio_f
+#or
+midwest %>% mutate(ratio_f = popadults / poptotal *100)
+
+#답
+# midwest 불러오기
+midwest <- as.data.frame(ggplot2::midwest)
+# midwest 에 백분율 변수 추가
+midwest <- midwest %>%
+  mutate(ratio_child = (poptotal-popadults)/poptotal*100)
+
+#• 문제 2. 미성년 인구 백분율이 가장 높은 상위 5 개 county(지역)의 미성년 인구 백분율을 출력하세요.
+midwest %>% arrange(desc(ratio_f)) %>% 
+  head(5)
+
+#답
+midwest %>%
+  arrange(desc(ratio_child)) %>% # ratio_child 내림차순 정렬
+  select(county, ratio_child) %>% # county, ratio_child 추출
+  head(5) # 상위 5 행 출력
+
+
+#• 문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
+midwest %>% mutate(class = ifelse(ratio_f >= 0.4, "A", ifelse(0.4 < ratio_f >= 0.3, "B", "C")))
+
+#답
+# midwest 에 grade 변수 추가
+midwest <- midwest %>%
+  mutate(grade = ifelse(ratio_child >= 40, "large",
+                        ifelse(ratio_child >= 30, "middle", "small")))
+# 미성년 비율 등급 빈도표
+table(midwest$grade)
+
+
+
+#• 문제4. popasian은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' 변수를 추가하고, 하위 10개 지역의 state(주), county(지역명), 아시아인 인구 백분율을 출력하세요.
+pop_asian <- midwest %>% 
+  mutate(ratio_a = popasian / poptotal *100) 
+  
+midwest %>% group_by(state, county, pop_asian)
+arrange(desc(pop_asian))
+
+#답
+midwest %>%
+  mutate(ratio_asian = (popasian/poptotal)*100) %>% # 백분율 변수 추가
+  arrange(ratio_asian) %>% # 내림차순 정렬
+  select(state, county, ratio_asian) %>% # 변수 추출
+  head(10) # 상위 10 행 출력
