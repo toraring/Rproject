@@ -55,3 +55,10 @@ ggplot(data = mpg, aes(x = cty)) + geom_bar
 
 #답
 ggplot(data = mpg, aes(x = class)) + geom_bar()
+
+###part 6-3
+#03. 시간에 따라 달라지는 데이터를 표현하는 선 그래프
+#Q1. psavert(개인 저축률)가 시간에 따라서 어떻게 변해왔는지 알아보려고 합니다. 시간에 따른 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+ggplot(data = economics, aes(x = date, y = psavert)) + geom_line()
+#답은 위와 동일
+
