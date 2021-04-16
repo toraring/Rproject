@@ -56,9 +56,27 @@ ggplot(data = mpg, aes(x = cty)) + geom_bar
 #답
 ggplot(data = mpg, aes(x = class)) + geom_bar()
 
-###part 6-3
-#03. 시간에 따라 달라지는 데이터를 표현하는 선 그래프
+###part 6-3. 시간에 따라 달라지는 데이터를 표현하는 선 그래프
 #Q1. psavert(개인 저축률)가 시간에 따라서 어떻게 변해왔는지 알아보려고 합니다. 시간에 따른 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
 ggplot(data = economics, aes(x = date, y = psavert)) + geom_line()
 #답은 위와 동일
 
+###part 6-4. 상자 그림 - 집단 간 분포 차이 표현하기
+#Q1. class(자동차 종류)가 "compact", "subcompact", "suv"인 자동차의 cty(도시 연비)가 어떻게 다른지 비교해보려고 합니다. 세 차종의 cty를 나타낸 상자 그림을 만들어보세요.
+df2 <- mpg %>%
+  filter(class == "suv", class =="subcompact", class == "compact" ) %>% 
+    #%in%을 집어넣을 것 
+    #아래는 필요없다. 위에서 cty를 구해서
+  group_by(manufacturer) %>%
+  summarise(mean_cty = mean(cty)) %>%
+  arrange(desc(mean_cty)) %>%
+  head(5)
+
+ggplot(data = mpg, aes(x = class, y = cty)) + geom_boxplot()
+  #mpg대신 df2로로
+
+#답
+class_mpg <- mpg %>%
+  filter(class %in% c("compact", "subcompact", "suv"))
+
+ggplot(data = class_mpg, aes(x = class, y = cty)) + geom_boxplot()
