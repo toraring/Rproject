@@ -66,4 +66,5 @@ df_data
 
 df_data %>% select(id, date, price, bedrooms)
 
+#########전부다 정답####
 
