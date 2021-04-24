@@ -36,6 +36,7 @@ table(welfare$sex)
 table(welfare$sex)
 # 이상치 결측 처리
 welfare$sex <- ifelse(welfare$sex == 9, NA, welfare$sex)
+welfare$sex
 # 결측치 확인
 table(is.na(welfare$sex))
 # 항목 이름 부여
