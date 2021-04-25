@@ -38,6 +38,7 @@ floor_level <- ifelse(dat$floors == 1, "low","high")
 # (10점) 4. 3 에서 생성한 floor_level에 따른 평균 집 값을 출력하는 함수를 작성하세요. 집 값에 관한 변수는 price입니다.
 # %>%와 dplyr에서 제공하는 함수를 이용하여 해결하세요.
 library(dplyr)
+
 dat_low <- dat %>% filter(floors == 1)
 dat_high <- dat %>% filter(floors != 1)
 
