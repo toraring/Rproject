@@ -237,3 +237,5 @@ mpg %>%
   group_by(manufacturer, drv) %>% # 회사별, 구방방식별 분리
   summarise(mean_cty = mean(cty)) %>% # cty 평균 산출
   head(10) # 일부 출력
+
+
