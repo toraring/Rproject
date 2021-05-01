@@ -72,7 +72,7 @@ unique(titanic$Survived)
 ##    (missing value 오류 여부는 Console에 출력되는 Error 메세지를 통해 확인 가능)
 
 trainControl(
-  method = 'repeatedcv',
+  method = "repeatedcv",
   number= 5,
   repeats = 5
 )
