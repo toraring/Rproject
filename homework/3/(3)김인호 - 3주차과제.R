@@ -41,6 +41,7 @@ library(caret)
 dat_stand <- (dat$price-mean(dat$price))/sd(dat$price)
 kc_house<- kc_house %>% mutate(dat_stand)
 View(kc_house)
+summary(kc_house)
 
 ## 3. sqft_living를 min-max 스케일링한 데이터를 kc_house에 추가해주세요. (변수명 무관) (10점) 
 ## 힌트
@@ -60,6 +61,7 @@ kc_house<- kc_house %>% mutate(dat_max)
 str(titanic)
 titanic$Survived <- as.factor(titanic$Survived)
 unique(titanic$Survived)
+titanic
 
 ## 5. 다음 조건을 바탕으로 생존여부(Survived)를 측정하는 Rogistic Regression 모델을 생성해주세요. (10점)
 ### 1) Cross Validation : 5-fold 
@@ -71,7 +73,7 @@ unique(titanic$Survived)
 ## 2) 정상 실행 되거나, "missing value 오류"가 출력되는 2가지 케이스 모두 정답입니다. 
 ##    (missing value 오류 여부는 Console에 출력되는 Error 메세지를 통해 확인 가능)
 
-trainControl(
+ctrl <- trainControl(
   method = "repeatedcv",
   number= 5,
   repeats = 5
@@ -80,18 +82,25 @@ customGrid <- expand.grid(k=1:10)
 titanic_new <- train(Survived ~ .,
                 data = titanic,
                 method = "LogitBoost", 
-                trControl = trainControl,
+                trControl = ctrl,
+                preProcess = c("center","scale"),
                 metric="Accuracy")
+titanic_new
 
-
-
+titanic_revise <- train(Survived ~ .,
+                     data = titanic,
+                     method = "LogitBoost", 
+                     trControl = ctrl,
+                     preProcess = c("center","scale"),
+                     metric="Accuracy")
+summary(titanic_revise$Survived)
 
 ## 6. 데이터 전처리
 ## 5번 문제에서 null인 데이터가 존재할 경우 모델링이 정상적으로 수행하지 않음을 확인하였습니다.
 ## 전체 컬럼 중 null인 데이터가 1개라도 있으면 모두 삭제하여 5번 모델링을 재실행해주세요. (10점) 
 table(is.na(titanic$Survived))
 table(is.na(titanic))
-titanic_revise <- na.omit(titanic)
+titanic_revise <- na.omit(titanic);titanic_revise
 table(is.na(titanic_revise))
 View(titanic_revise)
 ## 힌트
