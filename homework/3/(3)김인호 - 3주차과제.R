@@ -115,3 +115,7 @@ confusionMatrix(pred_test, titanic$Survived)
 
 ## 해석 : ___ 개의 Feature를 사용하여 생존 여부를 예측하였음
 '## 해석 : ___ 번의 반복이 가장 높은 정확도를 보이고 있음
+
+
+###힌트
+na.omit이 적용된 titanic_revise 데이터셋을 통해 train() 함수를 실행하지 않아 발생한 에러로 보입니다. 
