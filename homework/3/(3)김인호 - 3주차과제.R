@@ -32,6 +32,13 @@ train_y <- train[,14]
 
 test_x <- test[,1:13]
 test_y <- test[,14]
+##답
+df <- kc_house
+set.seed(2021)
+train_index <- sample(1:nrow(df), size=0.8*nrow(df))
+test_index <- (-train_index)
+df_train <- df[train_index, ]
+df_test <- df[test_index, ]
 
 ## 2. price를 표준화(standardization)한 데이터를 kc_house에 추가해주세요. (변수명 무관) (10점)
 ## 힌트 : mean(평균), sd(표준편차) 함수 활용
@@ -43,6 +50,11 @@ kc_house<- kc_house %>% mutate(dat_stand)
 View(kc_house)
 summary(kc_house)
 
+#답
+kc_house = kc_house %>%
+  mutate(price_st_1 = (price - mean(price)) / sd(price))
+kc_house = kchouse %>% mutate(price_st_2 = scale(price))
+
 ## 3. sqft_living를 min-max 스케일링한 데이터를 kc_house에 추가해주세요. (변수명 무관) (10점) 
 ## 힌트
 ## 1) sqft_living에 대한 min과 max값을 변수로 생성 
@@ -52,6 +64,11 @@ dat_max <- max(dat$sqft_living)
 kc_house<- kc_house %>% mutate(dat_min)
 kc_house<- kc_house %>% mutate(dat_max)
 
+#답
+min_sqft_living <- min(df_train$sqft_living)
+max_sqft_living <- max(df_train$sqft_living)
+df_train <- df_train %>%
+  mutate( minmax_sqft_living = (sqft_living - min_sqft_living) / (max_sqft_living - min_sqft_living))
 
 ## 4~7번 : titanic_train 데이터를 활용하여 문제를 풀어주세요.
 ## titanic은 train데이터이기에 추가적으로 train / test를 분리하지 않으셔도 됩니다. 
@@ -62,6 +79,10 @@ str(titanic)
 titanic$Survived <- as.factor(titanic$Survived)
 unique(titanic$Survived)
 titanic
+
+#답
+titanic$Survived <- as.factor(titanic$Survived)
+
 
 ## 5. 다음 조건을 바탕으로 생존여부(Survived)를 측정하는 Rogistic Regression 모델을 생성해주세요. (10점)
 ### 1) Cross Validation : 5-fold 
@@ -78,7 +99,7 @@ ctrl <- trainControl(
   number= 5,
   repeats = 5
 )
-customGrid <- expand.grid(k=1:10)
+#없어도 됨 customGrid <- expand.grid(k=1:10)
 titanic_new <- train(Survived ~ .,
                 data = titanic,
                 method = "LogitBoost", 
@@ -95,6 +116,16 @@ titanic_revise <- train(Survived ~ .,
                      metric="Accuracy")
 summary(titanic_revise$Survived)
 
+#답
+ctrl <- trainControl(method = "repeatedcv", number = 5, repeats = 5)
+logitFit <- train(Survived ~ .,
+                  data = df,
+                  method = "LogitBoost",
+                  na.action = na.omit,
+                  trControl = ctrl,
+                  metric = "Accuracy" )
+
+
 ## 6. 데이터 전처리
 ## 5번 문제에서 null인 데이터가 존재할 경우 모델링이 정상적으로 수행하지 않음을 확인하였습니다.
 ## 전체 컬럼 중 null인 데이터가 1개라도 있으면 모두 삭제하여 5번 모델링을 재실행해주세요. (10점) 
@@ -103,6 +134,17 @@ table(is.na(titanic))
 titanic_revise <- na.omit(titanic);titanic_revise
 table(is.na(titanic_revise))
 View(titanic_revise)
+
+#답
+df_notnull <- na.omit(df)
+ctrl <- trainControl(method = "repeatedcv", number = 5, repeats = 5)
+logitFit <- train(Survived ~ .,
+                  data = titanic,
+                  method = "LogitBoost",
+                  na.action = na.omit,
+                  trControl = ctrl,
+                  metric = "Accuracy" )
+logitFit
 ## 힌트
 ## 1) View 함수를 통해 null로 표시된 데이터는 어떤식으로 보이는지 확인해보시기 바랍니다.
 ## 2) 1안 : 참고 링크(https://m.blog.naver.com/PostView.nhn?blogId=liberty264&logNo=220992831831&proxyReferer=https:%2F%2Fwww.google.com%2F)
@@ -115,7 +157,10 @@ confusionMatrix(pred_test, titanic$Survived)
 
 ## 해석 : ___ 개의 Feature를 사용하여 생존 여부를 예측하였음
 '## 해석 : ___ 번의 반복이 가장 높은 정확도를 보이고 있음
-
+#답
+## 해석 : 11 개의 Feature를 사용하여 생존 여부를 예측하였음
+3주차 과제 예시 답안 3
+## 해석 : 11 번의 반복이 가장 높은 정확도를 보이고 있음
 
 ###힌트
 na.omit이 적용된 titanic_revise 데이터셋을 통해 train() 함수를 실행하지 않아 발생한 에러로 보입니다. 
