@@ -87,13 +87,21 @@ library(dplyr)
 bcw3 <- bcw
 colSums(is.na(bcw3))
 summary(bcw3)
-bcw3 <- scale(bcw) %>% as.data.frame()
+str(bcw3)
+bcw3R <- bcw3[,2:31]
+bcw3R <- scale(bcw3R) %>% as.data.frame()
+boxplot(bcw3)
 # 정답 :
 
 
 # bcw 데이터의 2번째 열부터 31번째 열을 이용하여 계층적 군집분석을 실시하려고 합니다.
 # (5점) 5-(1) 유클리드 거리를 기반으로 하는 유사도행렬을 생성하세요.
-bcw3.dist <- dist(bcw3.rm.outlier, method = "euclidean")
+library(tibble)
+bcw3R.rm.outlier <- bcw %>% rownames_to_column('rname') %>%
+  arrange(desc(`Rape`)) %>%
+  slice(-1:-2) %>%
+  column_to_rownames('rname')
+boxplot(df.rm.outlier)
 
 # (5점) 5-(1) bcw.dist를 이용해 ward's method로 계층적 군집분석을 실시하세요.
 
