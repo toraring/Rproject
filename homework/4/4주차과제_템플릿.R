@@ -84,7 +84,7 @@ plot(importanceGo)
 # 이 때 Elbow plot을 그리고 k의 적절한 개수와 그 이유를 작성해주세요.
 # 코드와 정답을 모두 작성하세요.
 library(dplyr)
-bcw3 <- bcw
+bcw3 <- bcw 
 colSums(is.na(bcw3))
 summary(bcw3)
 str(bcw3)
