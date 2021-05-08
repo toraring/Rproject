@@ -69,42 +69,82 @@ confusionMatrix(preTest, test$diagnosis)
 
 # (10점) 3-(1) bcw의 데이터 형태를 보고 "적절한 변수"에만 차원축소를 진행하세요.
 # 이 때, 변수의 표준화를 반드시 실행하세요. 
-importanceGo <- varImp(goFit, scale=FALSE)
-plot(importanceGo)
+View(bcw)
+bcw.pca <- prcomp(bcw[2:31], center = T, scale. = T)
+summary(bcw.pca)
+bcw.pca$rotation
+head(bcw.pca$x, 10)
+plot(bcw.pca, type = 'l', main = 'Scree Plot')
+head(bcw.pca$x[,1:2], 10)
+
 
 
 # (5점) 3-(2) 분산의 90% 이상을 설명하기 위해 몇 개의 주성분 변수를 사용해야 하나요? 코드를 작성하고 정답을 작성하세요.
+install.packages("ggfortify")
+library(ggfortify)
+autoplot(bcw.pca, data = bcw, colour = 'black')
 
-
+bcw <- scale(bcw) %>% as.data.frame()
 # 정답 : 8개
 
 
-#>??? 
 #(10점) 4-(1). 연속형 변수에만 k-means clustering을 실시하려고 합니다. 
 # 이 때 Elbow plot을 그리고 k의 적절한 개수와 그 이유를 작성해주세요.
 # 코드와 정답을 모두 작성하세요.
 library(dplyr)
 bcw3 <- bcw 
+head(bcw3)
 colSums(is.na(bcw3))
 summary(bcw3)
-str(bcw3)
-bcw3R <- bcw3[,2:31]
-bcw3R <- scale(bcw3R) %>% as.data.frame()
-boxplot(bcw3)
-# 정답 :
+boxplot(bcw3[,3:ncol(bcw3)])
+options(scipen = 100)
+boxplot(bcw3[,3:ncol(bcw3)])
+temp <- NULL
+for (i in 3:ncol(bcw3)) {
+  temp <- rbind(temp, bcw3[order(bcw3[,i], decreasing = T),] %>% slice(1:5))
+}
+temp <- distinct(temp)
+bcw3.rm.outlier <- anti_join(bcw3,temp)
+dev.off()
+par(mfrow = c(1,2))
+boxplot(bcw3[,3:ncol(bcw3)])
+
+
+install.packages("factoextra") 
+library(factoextra)
+fviz_nbclust(bcw3.rm.outlier[,3:ncol(bcw3.rm.outlier)], kmeans, method = "wss", k.max = 1
+             5) +
+  theme_minimal() +
+  ggtitle("Elbow Method")
+
+
+
+bcw3.rm.outlier <- bcw %>% rownames_to_column('rname') %>%
+  arrange(desc(`Rape`)) %>%
+  slice(-1:-2) %>%
+  column_to_rownames('rname')
+# 정답 : 93
 
 
 # bcw 데이터의 2번째 열부터 31번째 열을 이용하여 계층적 군집분석을 실시하려고 합니다.
 # (5점) 5-(1) 유클리드 거리를 기반으로 하는 유사도행렬을 생성하세요.
-library(tibble)
-bcw3R.rm.outlier <- bcw %>% rownames_to_column('rname') %>%
-  arrange(desc(`Rape`)) %>%
-  slice(-1:-2) %>%
-  column_to_rownames('rname')
-boxplot(df.rm.outlier)
+bcw.dist <- dist(bcw3.rm.outlier, method = "euclidean")
 
 # (5점) 5-(1) bcw.dist를 이용해 ward's method로 계층적 군집분석을 실시하세요.
 
+bcw.hclust.sing <- hclust(bcw.dist, method = "single" )
+bcw.hclust.cplt <- hclust(bcw.dist, method = "complete" )
+bcw.hclust.avg <- hclust(bcw.dist, method = "average" )
+bcw.hclust.cent <- hclust(bcw.dist, method = "centroid" )
+bcw.hclust.ward <- hclust(bcw.dist, method = "ward.D2" )
 
+par("mar")
+par(mar=c(1,1,1,1))
+plot(bcw.hclust.sing, cex = 0.6, hang = -1)
+rect.hclust(bcw.hclust.sing, k = 5, border = 2:31)
 # 5-(1)에서 만든 군집 분석 결과물을 확인하였더니 5개의 군집으로 구성하는 것이 적당해보입니다.
 # (5점) 5-(2) 원래의 데이터 bcw에 군집분석한 결과물을 이용해 cluster라는 새로운 변수를 생성하세요.
+bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
+table(bcw.clusters)
+bcw3.rm.outlier$cluster <- bcw.clusters
+head(bcw3.rm.outlier)
