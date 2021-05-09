@@ -132,7 +132,10 @@ bcw.dist <- dist(bcw3.rm.outlier, method = "euclidean")
 
 # (5점) 5-(1) bcw.dist를 이용해 ward's method로 계층적 군집분석을 실시하세요.
 
-
+bcw.hclust.sing <- hclust(bcw.dist, method = "single" )
+bcw.hclust.cplt <- hclust(bcw.dist, method = "complete" )
+bcw.hclust.avg <- hclust(bcw.dist, method = "average" )
+bcw.hclust.cent <- hclust(bcw.dist, method = "centroid" )
 bcw.hclust.ward <- hclust(bcw.dist, method = "ward.D2" )
 
 par("mar")
