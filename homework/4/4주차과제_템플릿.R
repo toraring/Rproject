@@ -203,7 +203,7 @@ rect.hclust(bcw.hclust.ward, k = 5, border = 2:6)
 bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
 table(bcw.clusters)
 bcw3.rm.outlier$cluster <- bcw.clusters
-head(bcw3.rm.outlier)
+head(bcw3.rm.outlier)  
 
 [답]
 bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
