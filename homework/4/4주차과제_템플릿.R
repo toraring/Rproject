@@ -164,6 +164,13 @@ bcw3.rm.outlier <- bcw %>% rownames_to_column('rname') %>%
   column_to_rownames('rname')
 # 정답 : 93
 
+[답]
+4-(1)에서 데이터 분석을 할 때 변수를 선택한 경우 적절한 이유가 있어야합니다. 또한 그래프를 그려보면 k는 15까지만 살펴보았기 때문에 정답이 틀렸으므로 10점 감점입니다.
+library(dplyr)
+library(factoextra)
+fviz_nbclust(bcw[,2:ncol(bcw)], kmeans, method = "wss", k.max = 15) + # ncol=31
+  theme_minimal() +
+  ggtitle("Elbow plot")
 
 # bcw 데이터의 2번째 열부터 31번째 열을 이용하여 계층적 군집분석을 실시하려고 합니다.
 # (5점) 5-(1) 유클리드 거리를 기반으로 하는 유사도행렬을 생성하세요.
@@ -181,6 +188,9 @@ par("mar")
 par(mar=c(1,1,1,1))
 plot(bcw.hclust.sing, cex = 0.6, hang = -1)
 rect.hclust(bcw.hclust.sing, k = 5, border = 2:31)
+
+[답]
+5-(1) (두번째) 에서 method를 지정해주었기 때문에 하나만 작성해주셔야 합니다. 5점 감점
 # 5-(1)에서 만든 군집 분석 결과물을 확인하였더니 5개의 군집으로 구성하는 것이 적당해보입니다.
 # (5점) 5-(2) 원래의 데이터 bcw에 군집분석한 결과물을 이용해 cluster라는 새로운 변수를 생성하세요.
 bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
