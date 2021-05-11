@@ -175,6 +175,9 @@ fviz_nbclust(bcw[,2:ncol(bcw)], kmeans, method = "wss", k.max = 15) + # ncol=31
 # bcw 데이터의 2번째 열부터 31번째 열을 이용하여 계층적 군집분석을 실시하려고 합니다.
 # (5점) 5-(1) 유클리드 거리를 기반으로 하는 유사도행렬을 생성하세요.
 bcw.dist <- dist(bcw3.rm.outlier, method = "euclidean")
+[답]
+bcw.dist <- dist(bcw[,2:31], method = "euclidean")
+bcw.dist
 
 # (5점) 5-(1) bcw.dist를 이용해 ward's method로 계층적 군집분석을 실시하세요.
 
@@ -191,9 +194,18 @@ rect.hclust(bcw.hclust.sing, k = 5, border = 2:31)
 
 [답]
 5-(1) (두번째) 에서 method를 지정해주었기 때문에 하나만 작성해주셔야 합니다. 5점 감점
+bcw.hclust.ward <- hclust(bcw.dist, method = "ward.D2" )
+plot(bcw.hclust.ward, cex = 0.6, hang = -1)
+rect.hclust(bcw.hclust.ward, k = 5, border = 2:6)
+
 # 5-(1)에서 만든 군집 분석 결과물을 확인하였더니 5개의 군집으로 구성하는 것이 적당해보입니다.
 # (5점) 5-(2) 원래의 데이터 bcw에 군집분석한 결과물을 이용해 cluster라는 새로운 변수를 생성하세요.
 bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
 table(bcw.clusters)
 bcw3.rm.outlier$cluster <- bcw.clusters
 head(bcw3.rm.outlier)
+
+[답]
+bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
+table(bcw.clusters)
+bcw$cluster <- bcw.clusters
