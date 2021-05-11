@@ -64,6 +64,9 @@ treePrune <- prune.misclass(treeOrigin, best=7)
 plot(treePrune)
 text(treePrune, pretty=0)
 
+[답]
+prune_tree <- prune.misclass(treeRaw, best=7)
+
 # 아래 코드를 실행 후 2번 문제풀이를 진행하세요.
 ctrl <- trainControl(method="repeatedcv",repeats = 5)
 
@@ -77,11 +80,25 @@ goFit <- train(diagnosis ~ .,
                metric="Accuracy")
 goFit
 
+[답]
+2-(1)에서 선형 svm은 method에 svmLinear를 지정해줘야 합니다. 5점 감점
+
+svm_linear_fit <- train(diagnosis ~ .,
+                        data = train,
+                        method = "svmLinear",
+                        trControl = ctrl,
+                        preProcess = c("center","scale"),
+                        metric="Accuracy")
+svm_linear_fit
+
 
 # (5점) 2-(2). 2- (1)에서 적합한 모형으로 test 데이터의 diagnosis값을 예측한 후, 혼동행렬을 만드는 코드를 작성하세요.
 preTest <- predict(goFit, newdata=test)
 confusionMatrix(preTest, test$diagnosis)
 
+[답]
+pred_test <- predict(svm_linear_fit, newdata=test)
+confusionMatrix(pred_test, test$diagnosis)
 
 # (10점) 3-(1) bcw의 데이터 형태를 보고 "적절한 변수"에만 차원축소를 진행하세요.
 # 이 때, 변수의 표준화를 반드시 실행하세요. 
