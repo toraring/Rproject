@@ -18,6 +18,9 @@ View(bcw)
 bcw$diagnosis <- as.factor(bcw$diagnosis)
 str(bcw)
 
+[답]
+bcw$diagnosis <- as.factor(bcw$diagnosis)
+
 # (5점) 1-(2) train 데이터와 test 데이터를 7:3의 비율로 나누어서 지정해주세요. 
 bcw2 <- bcw
 set.seed(2020)
@@ -33,11 +36,24 @@ train_y <- train[,14]
 test_x <- test[,1:13]
 test_y <- test[,14]
 
+[피드백]
+1-(2)에서 train_x 와 train_y로 나눌 때에는 변수를 보고 종속변수를 y로, 독립변수를 x로 해야 합니다. bcw같은 경우 id변수를 제거하면 첫 번째 변수가 y변수입니다.
+[답]
+flag <- sort(sample(nrow(bcw), nrow(bcw)*.7))
+train <- bcw[flag,]
+test <- bcw[-flag,]
 
 # (5점) 1-(3) target 변수는 diagnosis 입니다. tree함수를 이용하여 train데이터를 결정나무에 적합시키세요.
 treeOrigin <- tree(diagnosis~.  , data=train)
 plot(treeOrigin)
 text(treeOrigin)
+
+[답]
+treeRaw <- tree(diagnosis ~., data = train)
+적합된 나무 형태를 보려면 아래 코드를 실행하시면 됩니다.
+plot(treeRaw)
+text(treeRaw)
+
 
 # cv.tree 함수를 이용해 그래프로 나타내보니, size = 7에서 가지치기를 하는 것이 좋은 것으로 나타났습니다. 
 # (5점) 1-(4) size = 7로 가지치기 한 결정나무를 적합하세요.
