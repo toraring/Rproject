@@ -110,7 +110,10 @@ head(bcw.pca$x, 10)
 plot(bcw.pca, type = 'l', main = 'Scree Plot')
 head(bcw.pca$x[,1:2], 10)
 
-
+[답]
+str(bcw)
+등을 통해 변수 형태를 확인하고, 범주형 변수는 제외한 나머지 변수에만 차원 축소를 진행해야 합니다.
+bcw.pca <- prcomp(bcw[2:ncol(bcw)], center = T, scale. = T)
 
 # (5점) 3-(2) 분산의 90% 이상을 설명하기 위해 몇 개의 주성분 변수를 사용해야 하나요? 코드를 작성하고 정답을 작성하세요.
 install.packages("ggfortify")
@@ -119,6 +122,9 @@ autoplot(bcw.pca, data = bcw, colour = 'black')
 
 bcw <- scale(bcw) %>% as.data.frame()
 # 정답 : 8개
+
+[답]3-(2)에서 summary를 이용하면 분산의 몇 %를 설명하는지 알 수 있습니다. 정답은 7개로 5점 감점입니다.
+summary(bcw.pca)
 
 
 #(10점) 4-(1). 연속형 변수에만 k-means clustering을 실시하려고 합니다. 
