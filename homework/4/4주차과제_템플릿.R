@@ -198,7 +198,7 @@ bcw.hclust.ward <- hclust(bcw.dist, method = "ward.D2" )
 plot(bcw.hclust.ward, cex = 0.6, hang = -1)
 rect.hclust(bcw.hclust.ward, k = 5, border = 2:6)
 
-# 5-(1)에서 만든 군집 분석 결과물을 확인하였더니 5개의 군집으로 구성하는 것이 적당해보입니다.
+# 5-(1)에서 만든 군집 분석 결과물을 확인b하였더니 5개의 군집으로 구성하는 것이 적당해보입니다.
 # (5점) 5-(2) 원래의 데이터 bcw에 군집분석한 결과물을 이용해 cluster라는 새로운 변수를 생성하세요.
 bcw.clusters <- cutree(bcw.hclust.ward, k = 5)
 table(bcw.clusters)
