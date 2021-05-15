@@ -52,38 +52,81 @@ str(train1)
 
 ## 아래부터는 6번에서 생성한 데이터를 활용하여 머신러닝 모델을 만들고 해석하는 부분입니다. 
 # (5점) 7. k를 1~5까지 정의하여 kNN 모델을 생성해주세요. (preProcess 불필요, metric = "Accuracy")
+summary(train$Age)
+summary(train$Fare)
+set.seed(2020)
+newtrain <- train1
+train_ratio <- 0.7
+traintotal <- sort(sample(nrow(newtrain), nrow(newtrain)*train_ratio))
+train2 <- newtrain[traintotal,]
+test2 <- newtrain[-traintotal,]
 
+
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+customGrid <- expand.grid(k=1:5)
+knn_fit <- train( Survived ~ .,
+                  data = train2,
+                  method = "knn",
+                  trControl = ctrl,
+                  tuneGrid=customGrid,
+                  metric="Accuracy")
+knn_fit
 
 
 # (5점) 8. 7번 모델에 대한 실행 결과를 해석해주세요.
-# k가 (    )일 때 Accuracy가 (    )%로 가장 높습니다. 
+# k가 (  3  )일 때 Accuracy가 (  0.5383592  )%로 가장 높습니다. 
 
 
 
 # (5점) 9. Boosted Logistic Regression 모델을 생성해주세요. (preProcess 불필요, metric = "Accuracy")
-
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+logit_boost_fit <- train(Survived ~ .,
+                          data = train2,
+                          method = "LogitBoost",
+                          trControl = ctrl,
+                          metric="Accuracy")
+logit_boost_fit
 
 
 # (5점) 10. 9번 모델에 대한 실행 결과를 해석해주세요.
-# nIter가 (    )일 때 Accuracy가 (    )%로 가장 높습니다. 
+# nIter가 (  11  )일 때 Accuracy가 (  0.7956490  )%로 가장 높습니다. 
 
 
 
 # (5점) 11. Naive Bayes 모델을 생성해주세요. (preProcess 불필요, metric = "Accuracy")
-
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+nb_fit <- train(Survived ~ .,
+                 data = train2,
+                 method = "naive_bayes",
+                 trControl = ctrl,
+                 metric="Accuracy")
+nb_fit
 
 
 # (5점) 12. 11번 모델에 대한 실행 결과를 해석해주세요.
-# useKernel이 (    )일 때 Accuracy가 (    )%로 가장 높습니다. 
+# useKernel이 (  TRUE  )일 때 Accuracy가 (  0.6212653  )%로 가장 높습니다. 
 
 
 
 # (5점) 13. 연속형 숫자 피쳐만 선택하여 주성분 분석을 진행해주세요
 # hint. 연속형 숫자 피쳐 = 데이터 타입이 int와 num인 변수
 # hint. prcomp 함수 활용
+str(train2)
+numint_feature <- c("PassengerId","Pclass", "Age", 
+                 "SibSp", "Parch", "Fare")
+tar <- train1[,"Survived"]
+               
+numint_data <- train1[, numint_feature]
 
-
+pca_numint <- prcomp(numint_data)
+pca_numint
 
 # (5점) 14. 13번 모델의 summary 결과를 해석해주세요. 
-# 축이 4개 일 때 전체 변동성의 (    )를 설명합니다.
-
+# 축이 4개 일 때 전체 변동성의 ( 714 obs)를 설명합니다.
+summary(pca_numint)
+pca_matrix <- pca_numint$rotation
+pca_data <- as.matrix(numint_data) %*% pca_matrix
+dim(pca_data)
+reduced_data <- data.frame(cbind(pca_data[,1:3], tar))
+reduced_data$tar <- as.factor(reduced_data$tar)
+str(reduced_data)
