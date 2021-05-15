@@ -18,31 +18,37 @@ ctrl <- trainControl(method = "repeatedcv", number = 5, repeats = 2)
 # (5점) 1. train와 데이터의 타겟변수 Survived를 범주형 데이터로 변경해주세요. 
 # hint. as.factor함수 이용
 View(train)
+train$Survived <- as.factor(train$Survived)
 
 
 # (5점) 2. Pclass는 Ticket 등급을 나타내는 변수입니다. 변수의 고유한 값을 확인할 수 있도록 코드를 작성해주세요. 
 # hint. unique함수 이용 
-
+unique(train$Pclass)
 
 
 # (5점) 3. Pclass, Age, Fare 변수들의 히스토그램을 한 눈에 볼 수 있도록 시각화 해주세요 (1x3)
 # hint. par, hist함수 이용 
-
+par(mfrow=c(1,3), mar=c(5, 5, 5, 5))
+hist(train$Pclass, main="train Pclass histogram", xlab="train score",col="orange")
+hist(train$Age, main="train Age histogram", xlab="train score",col="green")
+hist(train$Fare, main="train Fare histogram", xlab="train score",col="blue")
 
 
 # (5점) 4. train 전체 데이터에 대해 변수산점도를 그려주세요.
 # hint. plot함수 이용  
-
+plot(train)
 
 
 # (5점) 5. Age, Fare 변수들을 표준화해주세요.
-
+train$Age <- scale(train$Age)
+train$Fare <- scale(train$Fare)
 
 
 # (5점) 6. train에서 na가 포함된 row는 모두 제거해주세요
 # hint. na.omit함수 이용 
-
-
+sum(is.na(train))
+train1 <- na.omit(train)
+str(train1)
 
 ## 아래부터는 6번에서 생성한 데이터를 활용하여 머신러닝 모델을 만들고 해석하는 부분입니다. 
 # (5점) 7. k를 1~5까지 정의하여 kNN 모델을 생성해주세요. (preProcess 불필요, metric = "Accuracy")
