@@ -24,7 +24,7 @@ train$Survived <- as.factor(train$Survived)
 # (5점) 2. Pclass는 Ticket 등급을 나타내는 변수입니다. 변수의 고유한 값을 확인할 수 있도록 코드를 작성해주세요. 
 # hint. unique함수 이용 
 unique(train$Pclass)
-
+zd
 
 # (5점) 3. Pclass, Age, Fare 변수들의 히스토그램을 한 눈에 볼 수 있도록 시각화 해주세요 (1x3)
 # hint. par, hist함수 이용 
