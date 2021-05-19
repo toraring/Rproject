@@ -152,3 +152,6 @@ str(reduced_data)
 #답
 축이 4개 일 때 전체 변동성의 99%를 설명합니다.
 전체 변동성은 "Cumulative Proportion" 를 의미합니다.
+
+##
+체체
