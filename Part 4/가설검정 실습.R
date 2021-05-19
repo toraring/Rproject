@@ -34,5 +34,63 @@ var.test(groupA[,2], groupB[,2])
 
 1.1.7.t-검정
 t.test(groupA[,2], groupB[,2], var.equal = TRUE, alternative="less")
+###
 
+1.2.각 집단 표본 수 = 10
+1.2.1.데이터 불러오기
+setwd("C:/RProject/Rproject/Part 4/Data")
+rawN10 <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+head(rawN10)
 
+1.2.2.그룹 이름 확인
+unique(rawN10$group)
+
+1.2.3.그룹 나누기
+groupA2 <- rawN10[rawN10$group=='A',1:2]
+groupB2 <- rawN10[rawN10$group=='B',1:2]
+
+1.2.4.그룹 별 평균 구하기
+mean(groupA2[,2])
+
+mean(groupB2[,2])
+
+1.2.5.정규성 검정
+shapiro.test(groupA2[,2])
+
+qqnorm(groupA2[,2])
+qqline(groupA2[,2])
+
+shapiro.test(groupB2[,2])
+
+qqnorm(groupB2[,2])
+qqline(groupB2[,2])
+
+1.2.6.분산 동질성 검정
+var.test(groupA2[,2], groupB2[,2])
+
+1.2.7.t-검정
+t.test(groupA2[,2], groupB2[,2], var.equal = FALSE, , alternative="less")
+
+1.3.대응표본 t 검정
+1.3.1.데이터 불러오기
+setwd("C:/RProject/Rproject/Part 4/Data")
+rawN10 <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+head(raw_d)
+
+1.3.2.그룹 나누기
+groupAd <- raw_d[,1]
+groupBd <- raw_d[,2]
+
+1.3.3.그룹 별 평균
+mean(groupAd)
+
+mean(groupBd)
+
+1.3.4.정규성 검정
+d = groupAd - groupBd
+d
+
+shapiro.test(d)
+
+qqnorm(d)
+qqline(d)
