@@ -94,3 +94,48 @@ shapiro.test(d)
 
 qqnorm(d)
 qqline(d)
+
+1.3.5.대응표본 t-검정
+t.test(groupAd, groupBd, alternative="less", paired=TRUE)
+
+1.4.각 집단 표본 수 = 30
+1.4.1.z.test 함수
+z.test <- function(x1, x2){
+  n_x1 = length(x1)
+  n_x2 = length(x2)
+  mean_x1 = mean(x1)
+  mean_x2 = mean(x2)
+  cat("\n")
+  cat("\tTwo Sample z-test\n")
+  cat("\n")
+  cat("mean of x1:", mean_x1, "\n")
+  cat("mean of x2:", mean_x2, "\n")
+  var_x1 = var(x1)
+  var_x2 = var(x2)
+  z = (mean_x1 - mean_x2)/sqrt((var_x1/n_x1)+(var_x2/n_x2))
+  abs_z = abs(z)
+  cat("z =", abs_z, "\n")
+  p_value = 1-pnorm(abs_z)
+  cat("p-value =", p_value)
+}
+
+
+1.4.2.데이터 불러오기
+setwd("C:/Users/Cheolwon/Documents/work/￿￿/R￿￿￿￿￿￿￿￿￿/")
+rawN30 <- read.csv(file="./dataset/hypothesis/htest03.csv", header = TRUE)
+head(rawN30)
+
+1.4.3.그룹 이름 확인
+unique(rawN30$group)
+
+1.4.4.그룹 별 데이터 나누기
+groupA3 <- rawN30[rawN30$group=='A',1:2]
+groupB3 <- rawN30[rawN30$group=='B',1:2]
+
+1.4.5.그룹 별 평균
+mean(groupA3[,2])
+mean(groupB3[,2])
+
+1.4.6.분산 동질성 검정
+var.test(groupA3[,2], groupB3[,2])
+
