@@ -74,7 +74,7 @@ t.test(groupA2[,2], groupB2[,2], var.equal = FALSE, , alternative="less")
 1.3.대응표본 t 검정
 1.3.1.데이터 불러오기
 setwd("C:/RProject/Rproject/Part 4/Data")
-rawN10 <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+raw_d <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
 head(raw_d)
 
 1.3.2.그룹 나누기
@@ -121,8 +121,8 @@ z.test <- function(x1, x2){
 
 
 1.4.2.데이터 불러오기
-setwd("C:/Users/Cheolwon/Documents/work/￿￿/R￿￿￿￿￿￿￿￿￿/")
-rawN30 <- read.csv(file="./dataset/hypothesis/htest03.csv", header = TRUE)
+setwd("C:/RProject/Rproject/Part 4/Data")
+rawN10 <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
 head(rawN30)
 
 1.4.3.그룹 이름 확인
@@ -139,3 +139,26 @@ mean(groupB3[,2])
 1.4.6.분산 동질성 검정
 var.test(groupA3[,2], groupB3[,2])
 
+1.4.7.t-검정
+t.test(groupA3[,2], groupB3[,2], var.equal = TRUE, alternative="less", conf.level=0.95)
+
+1.4.8.z-검정
+z.test(groupA3[,2], groupB3[,2])
+
+1.5.여러집단 평균 차이 검정
+1.5.1.lawstat 패키지 설치
+#install.packages("lawstat")
+library(lawstat)
+
+1.5.2.데이터 불러오기
+setwd("C:/RProject/Rproject/Part 4/Data")
+raw_anova <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+head(raw_anova)
+
+1.5.3.그룹 이름 확인
+unique(raw_anova$group)
+
+1.5.4.그룹 별 데이터 나누기
+groupA4 <- raw_anova[raw_anova$group=='A',1:2]
+groupB4 <- raw_anova[raw_anova$group=='B',1:2]
+groupC4 <- raw_anova[raw_anova$group=='C',1:2]
