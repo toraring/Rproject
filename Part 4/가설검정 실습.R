@@ -162,3 +162,18 @@ unique(raw_anova$group)
 groupA4 <- raw_anova[raw_anova$group=='A',1:2]
 groupB4 <- raw_anova[raw_anova$group=='B',1:2]
 groupC4 <- raw_anova[raw_anova$group=='C',1:2]
+
+
+1.5.5.그룹 별 평균 구하기
+mean(groupA4[,2])
+mean(groupB4[,2])
+mean(groupC4[,2])
+
+1.5.6.정규성 검정
+shapiro.test(groupA4[,2])
+
+qqnorm(groupA4[,2])
+qqline(groupA4[,2])
+shapiro.test(groupB4[,2])
+qqnorm(groupB4[,2])
+qqline(groupB4[,2])
