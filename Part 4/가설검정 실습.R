@@ -133,7 +133,7 @@ groupA3 <- rawN30[rawN30$group=='A',1:2]
 groupB3 <- rawN30[rawN30$group=='B',1:2]
 
 1.4.5.그룹 별 평균
-mean(groupA3[,2])
+mean(groupA3[,2])S
 mean(groupB3[,2])
 
 1.4.6.분산 동질성 검정
