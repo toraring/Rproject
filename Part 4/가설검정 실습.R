@@ -122,7 +122,7 @@ z.test <- function(x1, x2){
 
 1.4.2.데이터 불러오기
 setwd("C:/RProject/Rproject/Part 4/Data")
-rawN10 <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+rawN10 <- read.csv(file="./dataset/hypothesis/htest03.csv", header = TRUE)
 head(rawN30)
 
 1.4.3.그룹 이름 확인
@@ -152,7 +152,7 @@ library(lawstat)
 
 1.5.2.데이터 불러오기
 setwd("C:/RProject/Rproject/Part 4/Data")
-raw_anova <- read.csv(file="./dataset/hypothesis/htest02.csv", header = TRUE)
+raw_anova <- read.csv(file="./dataset/hypothesis/htest04.csv", header = TRUE)
 head(raw_anova)
 
 1.5.3.그룹 이름 확인
@@ -183,6 +183,25 @@ qqline(groupC4[,2])
 
 1.5.7.등분산성 검정
 levene.test(raw_anova$height, raw_anova$group)
+
+bartlett.test(height~group, data=raw_anova)
+
+1.5.8.ANOVA 검정
+rawAnova <- aov(height ~ group, data=raw_anova)
+summary(rawAnova)
+
+
+1.6.분할표를 이용한 연관성 검정
+1.6.1.데이터 불러오기
+setwd("C:/RProject/Rproject/Part 4/Data")
+raw_chisq <- read.csv(file="./dataset/hypothesis/htest05.csv", header = TRUE)
+
+
+1.6.2.데이터 테이블로 변환
+rawTable <- table(raw_chisq)
+
+1.6.3.카이제곱 검정
+chisq.test(rawTable, correct=FALSE)
 
 
 
