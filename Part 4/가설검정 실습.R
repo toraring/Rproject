@@ -177,3 +177,14 @@ qqline(groupA4[,2])
 shapiro.test(groupB4[,2])
 qqnorm(groupB4[,2])
 qqline(groupB4[,2])
+shapiro.test(groupC4[,2])
+qqnorm(groupC4[,2])
+qqline(groupC4[,2])
+
+1.5.7.등분산성 검정
+levene.test(raw_anova$height, raw_anova$group)
+
+
+
+
+
