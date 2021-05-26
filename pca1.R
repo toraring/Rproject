@@ -21,9 +21,3 @@ head(iris.pca$x, 10) # 각 주성분의 값
 5. scree plot 확인
 plot(iris.pca, type = 'l', main = 'Scree Plot') # PC의 분산을 y축으로 scree plot 생성
 
-6. 차원축소
-head(iris.pca$x[,1:2], 10) # 2개의 차원으로 축소
-
-7. 2차원 시각화
-library(ggfortify)
-autoplot(iris.pca, data = iris, colour = 'Species') # 2차원으로 축소된 데이터 시각화
