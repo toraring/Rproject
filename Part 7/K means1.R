@@ -31,4 +31,26 @@ temp %>% arrange(Fresh) %>% head() # 중복이 있음
 temp <- distinct(temp) # 중복 제거
 df.rm.outlier <- anti_join(df,temp) # df에서 temp 제거
 
+8. 이상치 제거 후 박스플롯 확인
+par(mfrow = c(1,2))
+boxplot(df[,3:ncol(df)])
+boxplot(df.rm.outlier[,3:ncol(df)])
+
+dev.off()
+
+분석, 결과치 확인 및 해석
+1. k 군집 개수 설정 (Elbow method)
+library(factoextra)
+set.seed(1234)
+fviz_nbclust(df.rm.outlier[,3:ncol(df.rm.outlier)], kmeans, method = "wss", k.max = 1
+             5) +
+  theme_minimal() +
+  ggtitle("Elbow Method")
+
+2. k 군집 개수 설정 (Silhouette method)
+fviz_nbclust(df.rm.outlier[,3:ncol(df.rm.outlier)], kmeans, method = "silhouette", k.
+             max = 15) +
+  theme_minimal() +
+  ggtitle("Silhouette Plot")
+
 
