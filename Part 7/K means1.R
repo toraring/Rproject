@@ -41,7 +41,7 @@ dev.off()
 분석, 결과치 확인 및 해석
 1. k 군집 개수 설정 (Elbow method)
 library(factoextra)
-set.seed(1234)
+set.seed(1234)  
 fviz_nbclust(df.rm.outlier[,3:ncol(df.rm.outlier)], kmeans, method = "wss", k.max = 1
              5) +
   theme_minimal() +
