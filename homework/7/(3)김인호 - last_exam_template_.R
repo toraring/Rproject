@@ -39,19 +39,27 @@ bank_balance <- bank %>% group_by(job) %>%
   arrange(desc(job_bal))
 View(bank_balance)
 
-# (5점) 1-(5) 교육수준(education)에 따른 정기예금 가입(y) 비율을 sum_by_edu라는 데이터에 저장하세요.
+#? (5점) 1-(5) 교육수준(education)에 따른 정기예금 가입(y) 비율을 sum_by_edu라는 데이터에 저장하세요.
 # Hint. 1과 0으로 이루어진 변수는 mean을 이용하면 비율을 구할 수 있습니다.
+y <- ifelse(bank$y == "yes", 1, 0) 
+unique(y)
+prop.table(table(y))
+sum_by_edu <- bank %>% group_by(education) %>% 
+  summarise(prop.table(table(y)))
 
+View(sum_by_edu)
+#yes를 1, no를 0으로 하고 평균까지 구했는데, 이를 교육별로 결과도출하는 것을 잘 모르겠습니다다..
 
-
-# (5점) 1-(6) 위 문제에서 만든 sum_by_edu 데이터를 이용하여 교육수준에 따른 정기예금 가입 비율을 막대그래프로 표현하세요.
-
+# ? (5점) 1-(6) 위 문제에서 만든 sum_by_edu 데이터를 이용하여 교육수준에 따른 정기예금 가입 비율을 막대그래프로 표현하세요.
+barplot(table(sum_by_edu))
 
 
 # (7)~(8) 나이와 평균 연평균 잔액의 관계를 살펴보고 싶습니다.
 # (5점) 1-(7)먼저 나이(age)별로 연평균 잔액(balance)의 평균을 구하고 이를 age_bl라는 데이터에 저장하세요.
+age_bl <- bank %>% group_by(age) %>% 
+  summarise(age_bal = mean(balance))
 
-
+View(age_bl)
 
 # (5점) 1-(8) age_bl데이터를 이용하여 나이와 평균 연평균 잔액의 산점도를 그리세요.
 
@@ -108,10 +116,10 @@ hr$salary <- NULL ## salary 변수 제거
 # (5점) 6. 아래에서 설명하고 있는 빅데이터 활용 기본 테크닉은 무엇인가요?
 # - 자연세계의 진화과정에 기초한 계산 모델로서 최적화 문제를 해결하는 기법의 하나이다. 생물의 진화를 모방한 진화 연산의 대표적인 기법으로, 실제 진화의 과정에서 많은 부분을 차용하였다.
 # - 어떤 미지의 함수 Y = f(x)를 최적화하는 해 x를 찾기 위해 진화를 모방한 탐색 알고리즘이라고 말할 수 있다.
-정답 : 
+정답 : 유전 알고리즘
   
 # (5점) 7. KDD 분석 방법론에서 분석 목적에 맞게 변수를 생성, 선택하는 등 데이터마이닝을 할 수 있도록 데이터를 변경하는 단계와 유사한 CRISP-DM 분석 방법론의 단계는 무엇인가요?
-정답 :
+정답 : 데이터 준비
   
 
   
