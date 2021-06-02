@@ -12,8 +12,8 @@ set.seed(1004)
 # 1~2번 문제는 bank1, 2데이터를 이용하여 푸는 문제입니다.자세한 설명은 문제 pdf파일을 참고하세요.
 
 # 아래 코드를 실행하여 데이터를 불러오세요. 경로는 적절하게 설정하세요
-bank1 <- read.table("./bank1.csv", sep = ";", header = TRUE)
-bank2 <- read.table("./bank2.csv", sep = ";", header = TRUE)
+bank1 <- read.table("C:/RProject/Rproject/homework/7/bank1.csv", sep = ";", header = TRUE)
+bank2 <- read.table("C:/RProject/Rproject/homework/7/bank2.csv", sep = ";", header = TRUE)
 bank <- merge(bank1, bank2, by = "ID")
 
 
