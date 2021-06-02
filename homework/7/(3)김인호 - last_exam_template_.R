@@ -19,18 +19,23 @@ bank <- merge(bank1, bank2, by = "ID")
 
 # (5점) 1-(1). 새로운 데이터는 여러가지를 검토하면서 데이터를 파악해야 합니다. 데이터를 검토하는 함수를 2개 이상 작성하세요.
 
+str(bank)
+dim(bank)
+head(bank)
+summary(bank)
+View(bank)
 
 # (5점) 1-(2). 데이터에 결측치가 있는지 확인하는 코드를 작성하세요. (참고로 결측치는 없습니다.)
-
+sum(is.na(bank))
 
 # (5점) 1-(3). 20세부터 59세까지의 고객만 고려하려고 합니다. age변수가 20세 이상 60세 미만인 데이터만 추출하세요. 
 # Hint. 앞으로의 분석에서 20세~59세 까지의 고객만 고려할 것이므로, 추출하고 데이터에 저장까지 해주셔야합니다.
-
-
+bank_age <- bank %>% filter(age >= 20 & age < 60)
+View(bank_age)
 
 # (5점) 1-(4). 직업 종류(job)에 따른 연평균 잔액(balance)의 평균을 구하고 내림차순으로 정렬하세요.
-
-
+bank_balance <- bank %>% arrange(desc(mean(bank$balance)))
+View(bank_balance)
 
 # (5점) 1-(5) 교육수준(education)에 따른 정기예금 가입(y) 비율을 sum_by_edu라는 데이터에 저장하세요.
 # Hint. 1과 0으로 이루어진 변수는 mean을 이용하면 비율을 구할 수 있습니다.
