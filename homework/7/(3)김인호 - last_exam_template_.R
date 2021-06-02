@@ -34,7 +34,9 @@ bank_age <- bank %>% filter(age >= 20 & age < 60)
 View(bank_age)
 
 # (5점) 1-(4). 직업 종류(job)에 따른 연평균 잔액(balance)의 평균을 구하고 내림차순으로 정렬하세요.
-bank_balance <- bank %>% arrange(desc(mean(bank$balance)))
+bank_balance <- bank %>% group_by(job) %>% 
+  summarise(job_bal = mean(balance)) %>% 
+  arrange(desc(job_bal))
 View(bank_balance)
 
 # (5점) 1-(5) 교육수준(education)에 따른 정기예금 가입(y) 비율을 sum_by_edu라는 데이터에 저장하세요.
