@@ -109,20 +109,30 @@ str(hr_R2)
 
 # hr 데이터는 left를 제외하고 모두 연속형 변수로 이루어져 있습니다. 
 # (10점) 4. 연속형 변수들을 이용하여 차원축소를 진행하려고 합니다. 차원 축소 후, 각 주성분이 분산의 몇%를 설명하는지 까지 확인하는 코드도 작성하세요. 
+hr1 <- hr[,1:8]
+hr1.pca <- prcomp(hr1[2:ncol(hr1)], center = T, scale. = T)
+str(hr1)
+pca_num <- prcomp(hr1)
+summary(pca_num)
+따라서 축1개 일 때는 99%을 설명하고 
+나머지 축이 2,3,4,5,6,7,8개 일 때는 100%를 설명한다
 
 
 # hr 데이터의 종속변수는 left로, 직장을 떠나는지의 여부입니다. 
 # (15점) 5. 분류에 해당하는 많은 알고리즘을 배웠습니다. 본인이 사용하고 싶은 알고리즘을 이용하여 분석을 진행하세요.
 # 결과 해석(test 데이터를 이용한 예측) 까지 진행하시기 바랍니다.
 # Hint. 데이터 분할 / 데이터 분석 / 결과 예측 순서대로 진행하시기 바랍니다. 
-
-
-
-
-
-
-
-
+library(caret)
+customGrid <- expand.grid(k = 1:5)
+nb_fit <- train(left ~ .,
+                data = hr,
+                method = "naive_bayes",
+                trControl = ctrl,
+                metric = "Accuracy")
+nb_fit
+summary(hr$left)
+usekernel가 true일때 Accuracy는 약 79%이고 kappa는 0.272099261이다. 
+따라서 회사를 떠날 가능성이 높다
 
 # 6~7 번은 Adsp 강의와 관련된 내용입니다.
 # 설명에 맞는 단어를 작성해주세요
