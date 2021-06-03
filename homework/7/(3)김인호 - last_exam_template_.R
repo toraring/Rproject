@@ -96,12 +96,16 @@ hr <- read.csv("C:/RProject/Rproject/homework/7/HR_new.csv", na.string = c("", "
 hr$left <- as.factor(hr$left)
 hr$salary <- NULL ## salary 변수 제거
 
-
+View(hr)
 
 # (5점) 3. 결측치가 last_evaluation, time_spend_company에 있다고 할 때, 이들 두 변수에 있는 결측치를 제거하는 코드를 작성해주세요. (현재 샘플링으로 인해 없어진 상태이지만 있다고 했을 때에 사용하는 코드를 작성해주시면 됩니다.)
-sum(is.na(train))
-train1 <- na.omit(train)
-str(last_evaluation)
+sum(is.na(hr$last_evaluation))
+sum(is.na(hr$time_spend_company))
+
+hr_R1 <- na.omit(hr$last_evaluation)
+hr_R2 <- na.omit(hr$time_spend_company)
+str(hr_R1)
+str(hr_R2)
 
 # hr 데이터는 left를 제외하고 모두 연속형 변수로 이루어져 있습니다. 
 # (10점) 4. 연속형 변수들을 이용하여 차원축소를 진행하려고 합니다. 차원 축소 후, 각 주성분이 분산의 몇%를 설명하는지 까지 확인하는 코드도 작성하세요. 
