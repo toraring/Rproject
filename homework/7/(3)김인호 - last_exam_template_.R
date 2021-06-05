@@ -48,7 +48,7 @@ sum_by_edu <- bank %>% group_by(education) %>%
   summarise(prop.table(table(y)))
 
 View(sum_by_edu)
-#yes를 1, no를 0으로 하고 평균까지 구했는데, 이를 교육별로 결과도출하는 것을 잘 모르겠습니다다..
+yes를 1, no를 0으로 하고 평균까지 구했는데, 이를 교육별로 결과도출하는 것을 잘 모르겠습니다..
 
 # ? (5점) 1-(6) 위 문제에서 만든 sum_by_edu 데이터를 이용하여 교육수준에 따른 정기예금 가입 비율을 막대그래프로 표현하세요.
 barplot(table(sum_by_edu))
