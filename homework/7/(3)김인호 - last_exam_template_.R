@@ -31,6 +31,14 @@ View(bank)
 # (5점) 1-(2). 데이터에 결측치가 있는지 확인하는 코드를 작성하세요. (참고로 결측치는 없습니다.)
 sum(is.na(bank))
 
+추가적인 답
+sum(is.na(bank))
+또는
+table(is.na(bank)
+      를 통하여 확인하실 수 있습니다.
+      직접 한 변수씩 확인해도 되지만 우선 이런식으로 전체 데이터 내에 NA가 있는지 파악해본 뒤, 만약 결측치가 있다면
+      추가로 개별 변수를 살펴보는 것이 시간을 단축시킬 수 있습니다.
+      
 # (5점) 1-(3). 20세부터 59세까지의 고객만 고려하려고 합니다. age변수가 20세 이상 60세 미만인 데이터만 추출하세요. 
 # Hint. 앞으로의 분석에서 20세~59세 까지의 고객만 고려할 것이므로, 추출하고 데이터에 저장까지 해주셔야합니다.
 bank_age <- bank %>% filter(age >= 20 & age < 60)
@@ -41,6 +49,11 @@ bank_balance <- bank %>% group_by(job) %>%
   summarise(job_bal = mean(balance)) %>% 
   arrange(desc(job_bal))
 View(bank_balance)
+
+더 정확한 답
+bank %>% group_by(job) %>%
+  summarise(mean_bal = mean(balance)) %>%
+  arrange(desc(mean_bal))
 
 #? (5점) 1-(5) 교육수준(education)에 따른 정기예금 가입(y) 비율을 sum_by_edu라는 데이터에 저장하세요.
 # Hint. 1과 0으로 이루어진 변수는 mean을 이용하면 비율을 구할 수 있습니다.
@@ -56,12 +69,20 @@ yes를 1, no를 0으로 하고 평균까지 구했는데, 이를 교육별로 �
 [피드백]
 1-(5) : group_by, summarise로 교육별 요약 통계량을 구할 수 있습니다 .summarise 내에 mean(y)를 써주시면 비율을 구할 수 있습니다. 5점 감점
 
+[답]
+sum_by_edu <- bank %>%
+  group_by(education) %>%
+  summarise(prop = mean(y == "yes"))
+
 # ? (5점) 1-(6) 위 문제에서 만든 sum_by_edu 데이터를 이용하여 교육수준에 따른 정기예금 가입 비율을 막대그래프로 표현하세요.
 barplot(table(sum_by_edu))
 
 [피드백]
 1-(6) : 5점 감점
 
+[답]
+ggplot(sum_by_edu, aes(x = education, y = prop, fill = education)) +
+  geom_col()
 
 # (7)~(8) 나이와 평균 연평균 잔액의 관계를 살펴보고 싶습니다.
 # (5점) 1-(7)먼저 나이(age)별로 연평균 잔액(balance)의 평균을 구하고 이를 age_bl라는 데이터에 저장하세요.
