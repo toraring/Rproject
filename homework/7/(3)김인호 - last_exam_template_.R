@@ -84,6 +84,21 @@ barplot(table(sum_by_edu))
 ggplot(sum_by_edu, aes(x = education, y = prop, fill = education)) +
   geom_col()
 
+[답2]
+만약 geom_bar를 사용하고 싶다면
+ggplot(sum_by_edu, aes(x = education, y = prop, fill = education)) +
+  geom_bar(stat = "identity")
+이렇게 (stat='identity') 를 추가해주면 동일하게 표현 가능합니다.
+geom_bar 내의 stat인자의 기본 값은 count로 빈도수를 계산하는데, stat='identity'로 지정하면 y축의 높이를 데이터의 값으로 하는
+bar그래프의 형태로 지정한다는 뜻입니다.
+Tip. 그래프를 좀 더 보기 좋게 표현하기 위해서 제목, 범례의 이름 등을 직접 지정할 수 있습니다.
+아래 함수도 한 번 실행해보세요!
+  ggplot(sum_by_edu, aes(x = education, y = prop, fill = education)) +
+  geom_bar(stat = "identity") +
+  ggtitle("교육 정도에 따른 정기예금 가입 비율") +
+  xlab("교육수준") + ylab("비율") +
+  scale_fill_discrete(name = "교육수준")
+
 # (7)~(8) 나이와 평균 연평균 잔액의 관계를 살펴보고 싶습니다.
 # (5점) 1-(7)먼저 나이(age)별로 연평균 잔액(balance)의 평균을 구하고 이를 age_bl라는 데이터에 저장하세요.
 age_bl <- bank %>% group_by(age) %>% 
@@ -94,6 +109,10 @@ View(age_bl)
 # (5점) 1-(8) age_bl데이터를 이용하여 나이와 평균 연평균 잔액의 산점도를 그리세요.
 plot(age_bl)
 
+[추가적인 답]
+ggplot(data = age_bl, aes(x = age, y = mean_bal)) + geom_point()
+또는
+plot(age_bl$age, age_bl$mean_bal)
 
 # (5점) 2-(1). 나이를 범주화 하여 age_group 변수로 지정해주세요.
 # 이 때, 범주는 20대, 30대, 40대, 50대로 나누어주시기 바랍니다. 
@@ -105,6 +124,18 @@ age_group <- age_bl %>%
 
 View(age_group)
 
+[추가적인 답]
+bank$age_group = ifelse(bank$age < 30, '20대',
+                        ifelse(bank$age < 40, '30대',
+                               ifelse(bank$age < 50,'40대','50대')))
+많은 분들이
+bank$age_group <- ifelse(bank$age<30, '20대',
+                         ifelse(bank$age<40 & bank$age >= 30, '30대',
+                                ifelse(bank$age<50 & bank$age >= 40, '40대','50대')))
+이렇게 중복 논리문을 사용해주셨는데, 정답 코드 처럼 작성해주셔도 동일하게 작동합니다.
+가장 안 쪽의 ifelse문 ifelse(bank$age < 50,'40대','50대') 이 먼저 실행되어 50세 미만은 전부 40대로 처리되고,
+그 다음 ifelse문에서 이 중 40세 미만은 30대로 처리되기 때문으로 이해해주시면 됩니다.
+
 # (5점) 2-(2) 연령 그룹에 따라 연평균 잔액의 평균이 다른지 알고 싶습니다. 알맞은 가설을 세워주세요.
 # 귀무가설 : 연령 그룹에 따라 연평균 잔액의 평균이 다르다
 # 대립가설 : 연령 그룹에 따라 연평균 잔액의 평균이 같다
@@ -112,6 +143,9 @@ View(age_group)
 [피드백]
 2-(2) : 귀무가설은 항상 등호입니다. 따라서 귀무가설과 대립가설이 바뀌어서 오답입니다. 5점감점
 
+[답]
+귀무가설 : 연평균 잔액의 평균은 연령 집단에 따라 차이가 없다.
+대립가설 : 연평균 잔액의 평균은 연령 그룹에 따라 차이가 있다.
 # (10점) 2-(3) (2)에서 세운 가설에 맞게 가설검정을 진행하세요. 관련 코드와 통계량에 따른 결론을 모두 작성해주셔야 합니다.
 # 단, 정규성과 등분산성을 모두 만족한다고 가정합니다.
 t.test(age_group[,2], alternative= 'two.sided',var.equal = TRUE)
@@ -122,7 +156,12 @@ t.test(age_group[,2], alternative= 'two.sided',var.equal = TRUE)
 # 결론을 아래에 작성하세요. 
 0.05보다 작으므로 귀무가설 기각된다. 
 따라서 연령 그룹에 따라 연평균 잔액의 평균이 같다
-  
+
+[답]
+ aov_test = aov(balance ~ age_group, data = bank)
+ summary(aov_test)
+ # 결론을 아래에 작성하세요.
+ p-value가 2e-16으로 유의수준 0.05보다 작으므로 귀무가설을 기각한다.
   
 # 3~5번 문제는 HR_new 데이터를 이용하여 풀어주세요.
 # 데이터에 대한 설명은 문제 pdf를 참고해주세요.
@@ -145,7 +184,14 @@ str(hr_R2)
 [피드백]
 3 : 데이터가 아닌 특정 변수에 na.omit을 적용하면 원래 데이터에 저장할 수 없기 때문에 (행개수가 달라짐) na.omit은 전체 데이터의 경우에 사용합니다. 변수 각각에 적용하고 싶은경우 is.na와 filter를 이용하셔서 제거하는 것이 좋습니다. 작성하신 답안처럼 hr <- na.omit(hr$last_evaluation) 이렇게 지정하면 원래 hr데이터가 아닌 na값이 제거된 (hr$last_evaluation) 값만 저장됩니다. 5점 감점
 또한 na.omit사용 후 반드시 원래 데이터에 지정해주셔야 결측치가 제거됩니다.
-
+[답]
+hr <- hr[!is.na(hr$time_spend_company), ]
+hr <- hr[!is.na(hr$last_evaluation), ]
+or
+hr <- hr %>% filter(!is.na(time_spend_company) & !is.na(last_evaluation))
+or
+hr <- na.omit(hr)
+# hr 데이터는 left와
 # hr 데이터는 left를 제외하고 모두 연속형 변수로 이루어져 있습니다. 
 # (10점) 4. 연속형 변수들을 이용하여 차원축소를 진행하려고 합니다. 차원 축소 후, 각 주성분이 분산의 몇%를 설명하는지 까지 확인하는 코드도 작성하세요. 
 hr1 <- hr[,1:8]
@@ -158,6 +204,11 @@ summary(pca_num)
 
 [피드백]
 4 : 데이터의 scale이 모두 다르기 때문에 표준화를 해주지 않으면 의미없는 차원축소가 진행됩니다. 반드시 표준화를 해주셔야합니다. 5점 감점
+
+[답]
+pca_data <- hr %>% select(-left, -salary)
+hr.pca <- prcomp(pca_data, center = T, scale. = T)
+summary(hr.pca)
 
 
 # hr 데이터의 종속변수는 left로, 직장을 떠나는지의 여부입니다. 
