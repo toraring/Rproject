@@ -229,6 +229,18 @@ usekernel가 true일때 Accuracy는 약 79%이고 kappa는 0.272099261이다.
 
 [피드백]
 5 : ctrl 를 지정하는 코드가 없습니다. 5점 감점
+[답]
+datatotal <- sort(sample(nrow(hr), nrow(hr)*0.7))
+train <- hr[datatotal,]
+test <- hr[-datatotal,]
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+rf_fit <- train(left ~ .,
+                data = train,
+                method = "rf",
+                trControl = ctrl,
+                metric="Accuracy")
+rf_pred <- predict(rf_fit, newdata=test)
+confusionMatrix(rf_pred, test$target)
 # 6~7 번은 Adsp 강의와 관련된 내용입니다.
 # 설명에 맞는 단어를 작성해주세요
 
