@@ -51,3 +51,6 @@ rect.hclust(df.hclust.avg, k = 4, border = 2:5)
 
 plot(df.hclust.cent, cex = 0.6, hang = -1)
 rect.hclust(df.hclust.cent, k = 4, border = 2:5)
+
+plot(df.hclust.ward, cex = 0.6, hang = -1)
+rect.hclust(df.hclust.ward, k = 4, border = 2:5)
