@@ -65,5 +65,15 @@ head(df.rm.outlier)
 
 5. 2차원 시각화
 library(factoextra)
-fviz_cluster(list(data = df.rm.outlier[,1:ncol(df.rm.outlier)-1], cluster = df.cluste
-                  rs))
+fviz_cluster(list(data = df.rm.outlier[,1:ncol(df.rm.outlier)-1], cluster = df.clusters))
+
+6. 군집별 평균치 확인 및 시각화
+library(reshape2)
+temp <- df.rm.outlier %>% melt(id = 'cluster')
+head(temp)
+
+df.means <- dcast(temp, cluster ~ variable, mean)
+df.means
+
+barplot(t(df.means[,-1]), beside=TRUE, col = 1:4, names.arg = c(1:4))
+legend("topright", colnames(df.rm.outlier[1:4]), fill = 1:4, cex = 0.5)
