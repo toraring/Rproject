@@ -54,3 +54,16 @@ rect.hclust(df.hclust.cent, k = 4, border = 2:5)
 
 plot(df.hclust.ward, cex = 0.6, hang = -1)
 rect.hclust(df.hclust.ward, k = 4, border = 2:5)
+
+
+4. raw data에 cluster 할당
+df.clusters <- cutree(df.hclust.ward, k = 4)
+table(df.clusters)
+
+df.rm.outlier$cluster <- df.clusters
+head(df.rm.outlier)
+
+5. 2차원 시각화
+library(factoextra)
+fviz_cluster(list(data = df.rm.outlier[,1:ncol(df.rm.outlier)-1], cluster = df.cluste
+                  rs))
