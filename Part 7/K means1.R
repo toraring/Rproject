@@ -53,4 +53,13 @@ fviz_nbclust(df.rm.outlier[,3:ncol(df.rm.outlier)], kmeans, method = "silhouette
   theme_minimal() +
   ggtitle("Silhouette Plot")
 
+3. k means 모델 생성
+df.kmeans <- kmeans(df.rm.outlier[,3:ncol(df.rm.outlier)], centers = 5, iter.max =100
+                    0 )
+df.kmeans
+
+4. 군집별 평균치 시각화
+barplot(t(df.kmeans$centers), beside=TRUE, col = 1:6)
+legend("topleft", colnames(df[,3:8]), fill = 1:6, cex = 0.5)
+
 
