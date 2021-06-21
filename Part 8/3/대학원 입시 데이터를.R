@@ -43,6 +43,5 @@ hist(rawdata1$CGPA, main="학부 학점 점수 히스토그램", xlab="학부 �
 hist(rawdata1$LOR, main="추천서 점수 히스토그램", xlab="추천서 점수", col="yellow")
 hist(rawdata1$Chance.of.Admit, main="대학원 합격 확률 히스토그램", xlab="추천서 점수", col="red")
 
-
-
-
+#변수 산점도
+plot(rawdata1)
