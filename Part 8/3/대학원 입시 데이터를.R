@@ -28,5 +28,10 @@ unique(rawdata1$University.Rating)
 u_rating_table <- table(rawdata1$University.Rating)
 unique(rawdata1$SOP)
 unique(rawdata1$LOR) 
+unique(rawdata1$Research)
+research_table <- table(rawdata1$Research)
+unique(rawdata1$Chance.of.Admit)
+max(rawdata1$Chance.of.Admit)
+min(rawdata1$Chance.of.Admit)
 
 
