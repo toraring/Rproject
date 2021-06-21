@@ -34,4 +34,15 @@ unique(rawdata1$Chance.of.Admit)
 max(rawdata1$Chance.of.Admit)
 min(rawdata1$Chance.of.Admit)
 
+#히스토그램
+par(mfrow=c(3,2), mar=c(5.1, 4.1, 4.1, 2.1))
+hist(rawdata1$GRE.Score, main="GRE 점수 히스토그램", xlab="GRE 점수",col="orange")
+hist(rawdata1$TOEFL.Score, main="토플 점수 히스토그램", xlab="토플 점수",col="green")
+hist(rawdata1$SOP, main="자기소개서 점수 히스토그램", xlab="자기소개서 점수",col="blue")
+hist(rawdata1$CGPA, main="학부 학점 점수 히스토그램", xlab="학부 학점 점수",col="darkmagenta")
+hist(rawdata1$LOR, main="추천서 점수 히스토그램", xlab="추천서 점수", col="yellow")
+hist(rawdata1$Chance.of.Admit, main="대학원 합격 확률 히스토그램", xlab="추천서 점수", col="red")
+
+
+
 
