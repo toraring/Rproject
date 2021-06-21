@@ -45,3 +45,18 @@ hist(rawdata1$Chance.of.Admit, main="대학원 합격 확률 히스토그램", x
 
 #변수 산점도
 plot(rawdata1)
+
+####################################
+#[회귀(regression) 문제로 대학원 합격률 예측하기]
+#트레이닝 테스트 데이터 나누기
+## 트레이닝 테스트 나누기(7:3)
+set.seed(2020)
+newdata <- rawdata1
+train_ratio <- 0.7
+datatotal <- sort(sample(nrow(newdata), nrow(newdata)*train_ratio))
+train <- newdata[datatotal,]
+test <- newdata[-datatotal,]
+
+#패키지 불러오기
+#install.packages("caret", dependencies=TRUE)
+library(caret)
