@@ -60,3 +60,15 @@ test <- newdata[-datatotal,]
 #패키지 불러오기
 #install.packages("caret", dependencies=TRUE)
 library(caret)
+
+#로지스틱 회귀분석
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logistic_fit <- train(Chance.of.Admit ~ ., 
+                      data = train, 
+                      method = "glm", 
+                      trControl = ctrl,
+                      preProcess = c("center","scale"),
+                      metric="RMSE")
+logistic_fit
+#그에 대한 예측 및 결과
+logistic_pred <- predict(logistic_fit, newdata=test)
