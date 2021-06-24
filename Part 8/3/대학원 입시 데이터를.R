@@ -72,3 +72,8 @@ logistic_fit <- train(Chance.of.Admit ~ .,
 logistic_fit
 #그에 대한 예측 및 결과
 logistic_pred <- predict(logistic_fit, newdata=test)
+
+##RMSE구하기
+postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
+RMSE(logistic_pred, test$Chance.of.Admit)
+sqrt(mean((logistic_pred - test$Chance.of.Admit)^2))
