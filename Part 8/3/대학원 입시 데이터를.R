@@ -77,3 +77,9 @@ logistic_pred <- predict(logistic_fit, newdata=test)
 postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
 RMSE(logistic_pred, test$Chance.of.Admit)
 sqrt(mean((logistic_pred - test$Chance.of.Admit)^2))
+
+##Rsquared 
+postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
+# R 제곱값 구하기
+y_bar = mean(test$Chance.of.Admit)
+1 - (sum((logistic_pred - test$Chance.of.Admit)^2) / sum((test$Chance.of.Admit-y_bar)^2))
