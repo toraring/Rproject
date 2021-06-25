@@ -83,3 +83,8 @@ postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
 # R 제곱값 구하기
 y_bar = mean(test$Chance.of.Admit)
 1 - (sum((logistic_pred - test$Chance.of.Admit)^2) / sum((test$Chance.of.Admit-y_bar)^2))
+
+#MAE
+postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
+MAE(logistic_pred, test$Chance.of.Admit)
+mean(abs(logistic_pred - test$Chance.of.Admit))
