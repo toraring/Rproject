@@ -98,3 +98,6 @@ logit_penal_fit <- train(Chance.of.Admit ~ .,
                          preProcess = c("center","scale"),
                          metric="RMSE")
 logit_penal_fit 
+##예측 및 결과
+logit_penal_pred <- predict(logit_penal_fit, newdata=test)
+postResample(pred = logit_penal_pred, obs = test$Chance.of.Admit)
