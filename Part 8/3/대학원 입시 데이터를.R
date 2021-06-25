@@ -88,3 +88,13 @@ y_bar = mean(test$Chance.of.Admit)
 postResample(pred = logistic_pred, obs = test$Chance.of.Admit)
 MAE(logistic_pred, test$Chance.of.Admit)
 mean(abs(logistic_pred - test$Chance.of.Admit))
+
+#엘라스틱넷(Elasticnet) 회귀분석
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_penal_fit <- train(Chance.of.Admit ~ ., 
+                         data = train, 
+                         method = "glmnet", 
+                         trControl = ctrl,
+                         preProcess = c("center","scale"),
+                         metric="RMSE")
+logit_penal_fit 
