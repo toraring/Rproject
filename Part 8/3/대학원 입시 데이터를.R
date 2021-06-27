@@ -101,3 +101,14 @@ logit_penal_fit
 ##예측 및 결과
 logit_penal_pred <- predict(logit_penal_fit, newdata=test)
 postResample(pred = logit_penal_pred, obs = test$Chance.of.Admit)
+
+#랜덤 포레스트
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+rf_fit <- train(Chance.of.Admit ~ ., 
+                data = train, 
+                method = "rf", 
+                trControl = ctrl, 
+                preProcess = c("center","scale"),
+                metric="RMSE")
+rf_fit
+plot(rf_fit)
