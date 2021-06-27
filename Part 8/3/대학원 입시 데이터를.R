@@ -115,3 +115,14 @@ plot(rf_fit)
 
 rf_pred <- predict(rf_fit, newdata=test)
 postResample(pred = rf_pred, obs = test$Chance.of.Admit)
+
+#선형 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+svm_poly_fit <- train(Chance.of.Admit ~ ., 
+                      data = train, 
+                      method = "svmPoly", 
+                      trControl = ctrl, 
+                      preProcess = c("center","scale"),
+                      metric="RMSE")
+svm_poly_fit 
+plot(svm_ploy_fit)
