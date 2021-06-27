@@ -112,3 +112,6 @@ rf_fit <- train(Chance.of.Admit ~ .,
                 metric="RMSE")
 rf_fit
 plot(rf_fit)
+
+rf_pred <- predict(rf_fit, newdata=test)
+postResample(pred = rf_pred, obs = test$Chance.of.Admit)
