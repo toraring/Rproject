@@ -126,3 +126,6 @@ svm_poly_fit <- train(Chance.of.Admit ~ .,
                       metric="RMSE")
 svm_poly_fit 
 plot(svm_ploy_fit)
+##예측 및 결과
+svm_linear_pred <- predict(svm_linear_fit, newdata=test)
+postResample(pred = svm_linear_pred, obs = test$Chance.of.Admit)
