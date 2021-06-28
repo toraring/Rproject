@@ -157,3 +157,9 @@ library(caret)
 rawdata2 <- read.csv("C:/Users/파일 경로/university.csv", head=TRUE)
 
 str(rawdata2)
+#타겟 변수 살펴보기
+par(mfrow=c(1,2), mar=c(5.1, 4.1, 4.1, 2.1))
+hist(rawdata2$Chance.of.Admit, main="대학원 합격 확률 히스토그램", xlab="대학원 합격 확률", col="red")
+boxplot(rawdata2$Chance.of.Admit, main="대학원 합격 확률 box-plot", col="red")
+summary(rawdata2$Chance.of.Admit)
+target_median = median(rawdata2$Chance.of.Admit)
