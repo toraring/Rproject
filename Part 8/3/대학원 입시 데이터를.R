@@ -143,3 +143,17 @@ plot(svm_ploy_fit)
 ##예측 및 결과
 svm_poly_pred <- predict(svm_poly_fit, newdata=test)
 postResample(pred = svm_poly_pred, obs = test$Chance.of.Admit)
+
+##[분류(classification) 문제로 대학원 합격 여부 분류하기]
+#변수 별 유니크 값 확인
+max(rawdata1$Chance.of.Admit)
+min(rawdata1$Chance.of.Admit)
+
+#데이터 불러오기
+#install.packages("caret", dependencies=TRUE)
+library(caret)
+
+### 파일 불러오기 
+rawdata2 <- read.csv("C:/Users/파일 경로/university.csv", head=TRUE)
+
+str(rawdata2)
