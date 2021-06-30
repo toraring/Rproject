@@ -163,3 +163,12 @@ hist(rawdata2$Chance.of.Admit, main="대학원 합격 확률 히스토그램", x
 boxplot(rawdata2$Chance.of.Admit, main="대학원 합격 확률 box-plot", col="red")
 summary(rawdata2$Chance.of.Admit)
 target_median = median(rawdata2$Chance.of.Admit)
+
+### 타겟 연속형 -> 범주형
+rawdata2[(rawdata2$Chance.of.Admit < target_median),"Chance.of.Admit"] = "0"
+rawdata2[(rawdata2$Chance.of.Admit >= target_median),"Chance.of.Admit"] = "1"
+
+rawdata2$Chance.of.Admit <- as.factor(rawdata2$Chance.of.Admit)
+str(rawdata2)
+unique(rawdata2$Chance.of.Admit)
+rawdata2
