@@ -172,3 +172,12 @@ rawdata2$Chance.of.Admit <- as.factor(rawdata2$Chance.of.Admit)
 str(rawdata2)
 unique(rawdata2$Chance.of.Admit)
 rawdata2
+
+#트레이닝 테스트 나누기
+## 트레이닝 테스트 나누기(7:3)
+set.seed(2020)
+newdata2 <- rawdata2
+train_ratio <- 0.7
+datatotal2 <- sort(sample(nrow(newdata2), nrow(newdata2)*train_ratio))
+train2 <- newdata2[datatotal2,]
+test2 <- newdata2[-datatotal2,]
