@@ -197,3 +197,14 @@ plot(knn_fit2)
 
 knn_pred2 <- predict(knn_fit2, newdata=test2)
 confusionMatrix(knn_pred2, test2$Chance.of.Admit)
+
+#Logit Boost
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_boost_fit2 <- train(Chance.of.Admit ~ ., 
+                          data = train2, 
+                          method = "LogitBoost", 
+                          trControl = ctrl, 
+                          preProcess = c("center","scale"),
+                          metric="Accuracy")
+logit_boost_fit2
+plot(logit_boost_fit2)
