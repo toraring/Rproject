@@ -224,3 +224,14 @@ plot(logit_plr_fit2)
 
 logit_plr_pred <- predict(logit_plr_fit2, newdata=test2)
 confusionMatrix(logit_plr_pred, test2$Chance.of.Admit)
+
+### naive bayes
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+nb_fit2 <- train(Chance.of.Admit ~ ., 
+                 data = train2, 
+                 method = "naive_bayes", 
+                 trControl = ctrl, 
+                 preProcess = c("center","scale"),
+                 metric="Accuracy")
+nb_fit2
+plot(nb_fit2)
