@@ -235,3 +235,6 @@ nb_fit2 <- train(Chance.of.Admit ~ .,
                  metric="Accuracy")
 nb_fit2
 plot(nb_fit2)
+
+nb_pred2 <- predict(nb_fit2, newdata=test2)
+confusionMatrix(nb_pred2, test2$Chance.of.Admit)
