@@ -210,3 +210,14 @@ logit_boost_fit2
 logit_boost_pred <- predict(logit_boost_fit2, newdata=test2)
 confusionMatrix(logit_boost_pred, test2$Chance.of.Admit)
 plot(logit_boost_fit2)
+
+## penalized 로지스틱 
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_plr_fit2 <- train(Chance.of.Admit ~ ., 
+                        data = train2, 
+                        method = "plr", 
+                        trControl = ctrl, 
+                        preProcess = c("center","scale"),
+                        metric="Accuracy")
+logit_plr_fit2
+plot(logit_plr_fit2)
