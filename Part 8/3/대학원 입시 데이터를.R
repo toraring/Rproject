@@ -221,3 +221,6 @@ logit_plr_fit2 <- train(Chance.of.Admit ~ .,
                         metric="Accuracy")
 logit_plr_fit2
 plot(logit_plr_fit2)
+
+logit_plr_pred <- predict(logit_plr_fit2, newdata=test2)
+confusionMatrix(logit_plr_pred, test2$Chance.of.Admit)
