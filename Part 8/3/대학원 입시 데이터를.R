@@ -262,3 +262,6 @@ svm_linear_fit2 <- train(Chance.of.Admit ~ .,
                          preProcess = c("center","scale"),
                          metric="Accuracy")
 svm_linear_fit2
+
+svm_linear_pred2 <- predict(svm_linear_fit2, newdata=test2)
+confusionMatrix(svm_linear_pred2, test2$Chance.of.Admit)
