@@ -238,3 +238,17 @@ plot(nb_fit2)
 
 nb_pred2 <- predict(nb_fit2, newdata=test2)
 confusionMatrix(nb_pred2, test2$Chance.of.Admit)
+
+### Random Forest
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+rf_fit2 <- train(Chance.of.Admit ~ ., 
+                 data = train2, 
+                 method = "rf", 
+                 trControl = ctrl, 
+                 preProcess = c("center","scale"),
+                 metric="Accuracy")
+rf_fit2
+plot(rf_fit2)
+
+rf_pred2 <- predict(rf_fit2, newdata=test2)
+confusionMatrix(rf_pred2, test2$Chance.of.Admit)
