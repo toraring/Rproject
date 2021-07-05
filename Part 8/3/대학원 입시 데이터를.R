@@ -265,3 +265,14 @@ svm_linear_fit2
 
 svm_linear_pred2 <- predict(svm_linear_fit2, newdata=test2)
 confusionMatrix(svm_linear_pred2, test2$Chance.of.Admit)
+
+## 커널 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+svm_poly_fit2 <- train(Chance.of.Admit ~ ., 
+                       data = train2, 
+                       method = "svmPoly", 
+                       trControl = ctrl, 
+                       preProcess = c("center","scale"),
+                       metric="Accuracy")
+svm_poly_fit2
+plot(svm_poly_fit2)
