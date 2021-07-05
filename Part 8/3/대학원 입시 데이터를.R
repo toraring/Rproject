@@ -276,3 +276,6 @@ svm_poly_fit2 <- train(Chance.of.Admit ~ .,
                        metric="Accuracy")
 svm_poly_fit2
 plot(svm_poly_fit2)
+
+svm_poly_pred2 <- predict(svm_poly_fit2, newdata=test2)
+confusionMatrix(svm_poly_pred2, test2$Chance.of.Admit)
