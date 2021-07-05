@@ -252,3 +252,13 @@ plot(rf_fit2)
 
 rf_pred2 <- predict(rf_fit2, newdata=test2)
 confusionMatrix(rf_pred2, test2$Chance.of.Admit)
+
+# 선형 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+svm_linear_fit2 <- train(Chance.of.Admit ~ ., 
+                         data = train2, 
+                         method = "svmLinear", 
+                         trControl = ctrl, 
+                         preProcess = c("center","scale"),
+                         metric="Accuracy")
+svm_linear_fit2
