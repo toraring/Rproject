@@ -295,3 +295,7 @@ plot(knnFit)
 #prediction
 pred_test <- predict (knnFit, newdata= test) 
 confusionMatrix (pred_test, test $ Class)
+
+#importance_knn 
+importance_knn <- varImp (knnFit, scale= FALSE ) 
+plot (importance_knn)
