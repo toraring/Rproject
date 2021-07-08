@@ -289,3 +289,9 @@ knnFit <- train (Class ~ .,
                  trControl = ctrl,
                  preProcess = c ( "center" , "scale" ), tuneGrid= customGrid, metric= "Accuracy" )
 knnFit
+
+plot(knnFit)
+
+#prediction
+pred_test <- predict (knnFit, newdata= test) 
+confusionMatrix (pred_test, test $ Class)
