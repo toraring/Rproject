@@ -279,3 +279,13 @@ plot(svm_poly_fit2)
 
 svm_poly_pred2 <- predict(svm_poly_fit2, newdata=test2)
 confusionMatrix(svm_poly_pred2, test2$Chance.of.Admit)
+
+#edu
+ctrl <- trainControl ( method= "repeatedcv" , number= 10 , repeats = 5 ) 
+customGrid <- expand.grid ( k= 1 : 10 ) 
+knnFit <- train (Class ~ .,
+                 data = train,
+                 method = "knn" ,
+                 trControl = ctrl,
+                 preProcess = c ( "center" , "scale" ), tuneGrid= customGrid, metric= "Accuracy" )
+knnFit
