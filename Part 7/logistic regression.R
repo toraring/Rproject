@@ -10,10 +10,15 @@ str(rawdata)
 rawdata$target <- as.factor(rawdata$target)
 unique(rawdata$target)
 
-#연속형 독립변수 범주화화
+#연속형 독립변수 범주화
 rawdata$age <- scale(rawdata$age)
 rawdata$trestbps <- scale(rawdata$trestbps)
 rawdata$chol <- scale(rawdata$chol)
 rawdata$thalach <- scale(rawdata$thalach)
 rawdata$oldpeak <- scale(rawdata$oldpeak)
 rawdata$slope <- scale(rawdata$slope)
+
+#범주형 독립변수 범주화
+newdata <- rawdata
+factorVar <- c("sex", "cp", "fbs", "restecg", "exang", "ca", "thal")
+newdata[ ,factorVar] = lapply(newdata[ ,factorVar], factor)
