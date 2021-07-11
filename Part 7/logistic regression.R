@@ -32,3 +32,13 @@ train_x <- train[,1:12]
 train_y <- train[,13]
 test_x <- test[,1:12]
 test_y <- test[,13]
+
+#learning
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+logitFit <- train(target ~ .,
+                  data = train,
+                  method = "LogitBoost",
+                  trControl = ctrl,
+                  metric="Accuracy")
+logitFit
+plot(logitFit)
