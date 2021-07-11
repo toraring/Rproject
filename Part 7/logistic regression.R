@@ -22,3 +22,13 @@ rawdata$slope <- scale(rawdata$slope)
 newdata <- rawdata
 factorVar <- c("sex", "cp", "fbs", "restecg", "exang", "ca", "thal")
 newdata[ ,factorVar] = lapply(newdata[ ,factorVar], factor)
+
+#Divided training test data
+set.seed(2020)
+datatotal <- sort(sample(nrow(newdata), nrow(newdata)*.7))
+train <- newdata[datatotal,]
+test <- newdata[-datatotal,]
+train_x <- train[,1:12]
+train_y <- train[,13]
+test_x <- test[,1:12]
+test_y <- test[,13]
