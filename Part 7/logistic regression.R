@@ -46,3 +46,7 @@ plot(logitFit)
 #prediction
 pred_test <- predict(logitFit, newdata=test)
 confusionMatrix(pred_test, test$target)
+
+#importance of a variable
+importance_logit <- varImp(logitFit, scale=FALSE)
+plot(importance_logit)
