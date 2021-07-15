@@ -20,3 +20,14 @@ train_y <- train[,14]
 test_x <- test[,1:13]
 test_y <- test[,14]
 str(train)
+
+#training
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+nbFit <- train(Class ~ .,
+               data = train,
+               method = "naive_bayes",
+               trControl = ctrl,
+               preProcess = c("center","scale"),
+               metric="Accuracy")
+plot(nbFit)
+nbFit
