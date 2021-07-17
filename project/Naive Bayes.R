@@ -35,5 +35,8 @@ plot(nbFit)
 pred_test <- predict(nbFit, newdata=test)
 confusionMatrix(pred_test, test$Class)
 
+#importance of a variable
+importance_nb <- varImp(nbFit, scale=FALSE)
+plot(importance_nb)
 
 nbFit
