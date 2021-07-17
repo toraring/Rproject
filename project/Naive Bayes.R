@@ -30,4 +30,10 @@ nbFit <- train(Class ~ .,
                preProcess = c("center","scale"),
                metric="Accuracy")
 plot(nbFit)
+
+#prediction
+pred_test <- predict(nbFit, newdata=test)
+confusionMatrix(pred_test, test$Class)
+
+
 nbFit
