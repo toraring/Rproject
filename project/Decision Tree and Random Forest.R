@@ -22,3 +22,7 @@ library(tree)
 treeRaw <- tree(Class~. , data=train)
 plot(treeRaw)
 text(treeRaw)
+
+#cross-validation
+cv_tree <- cv.tree(treeRaw, FUN=prune.misclass)
+plot(cv_tree)
