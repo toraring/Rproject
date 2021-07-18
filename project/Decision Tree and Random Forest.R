@@ -15,3 +15,10 @@ datatotal <- sort(sample(nrow(analdata), nrow(analdata)*.7))
 train <- rawdata[datatotal,]
 test <- rawdata[-datatotal,]
 str(train)
+
+#Decision Tree 학습
+#install.packages("tree")
+library(tree)
+treeRaw <- tree(Class~. , data=train)
+plot(treeRaw)
+text(treeRaw)
