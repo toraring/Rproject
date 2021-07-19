@@ -26,3 +26,8 @@ text(treeRaw)
 #cross-validation
 cv_tree <- cv.tree(treeRaw, FUN=prune.misclass)
 plot(cv_tree)
+
+#가지 치기를 통한 Decision Tree를 최적화
+prune_tree <- prune.misclass(treeRaw, best=4)
+plot(prune_tree)
+text(prune_tree, pretty=0)
