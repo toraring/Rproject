@@ -31,3 +31,7 @@ plot(cv_tree)
 prune_tree <- prune.misclass(treeRaw, best=4)
 plot(prune_tree)
 text(prune_tree, pretty=0)
+
+#Decision Tree 예측
+pred <- predict(prune_tree, test, type='class')
+confusionMatrix(pred, test$Class)
