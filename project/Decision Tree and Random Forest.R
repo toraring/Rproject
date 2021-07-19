@@ -35,3 +35,15 @@ text(prune_tree, pretty=0)
 #Decision Tree 예측
 pred <- predict(prune_tree, test, type='class')
 confusionMatrix(pred, test$Class)
+
+#Random Forest 학습
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+rfFit <- train(Class ~ .,
+               data = train,
+               method = "rf",
+               trControl = ctrl,
+               preProcess = c("center","scale"),
+               metric="Accuracy")
+
+rfFit
+plot(rfFit)
