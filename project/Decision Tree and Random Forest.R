@@ -51,3 +51,7 @@ plot(rfFit)
 #Random Forest 예측
 pred_test <- predict(rfFit, newdata=test)
 confusionMatrix(pred_test, test$Class)
+
+#Random Forest 변수중요도
+importance_rf <- varImp(rfFit, scale=FALSE)
+plot(importance_rf)
