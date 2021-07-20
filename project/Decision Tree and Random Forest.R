@@ -47,3 +47,7 @@ rfFit <- train(Class ~ .,
 
 rfFit
 plot(rfFit)
+
+#Random Forest 예측
+pred_test <- predict(rfFit, newdata=test)
+confusionMatrix(pred_test, test$Class)
