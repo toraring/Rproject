@@ -30,3 +30,8 @@ svm_linear_fit <- train(Class ~ .,
                         preProcess = c("center","scale"),
                         metric="Accuracy")
 svm_linear_fit
+
+pred_test <- predict(svm_linear_fit, newdata=test)
+confusionMatrix(pred_test, test$Class)
+importance_linear <- varImp(svm_linear_fit, scale=FALSE)
+plot(importance_linear)
