@@ -35,3 +35,17 @@ pred_test <- predict(svm_linear_fit, newdata=test)
 confusionMatrix(pred_test, test$Class)
 importance_linear <- varImp(svm_linear_fit, scale=FALSE)
 plot(importance_linear)
+
+#비선형 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)
+svm_ploy_fit <- train(Class ~ .,
+                      data = train,
+                      method = "svmPoly",
+                      trControl = ctrl,
+                      preProcess = c("center","scale"),
+                      metric="Accuracy")
+svm_ploy_fit
+
+plot(svm_ploy_fit)
+pred_test <- predict(svm_ploy_fit, newdata=test)
+confusionMatrix(pred_test, test$Class)
