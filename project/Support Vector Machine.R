@@ -1,5 +1,5 @@
 #[Support Vector Machine]
-
+ 
 #install
 #install.packages("caret", dependencies=TRUE)
 library(caret)
