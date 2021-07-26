@@ -48,3 +48,10 @@ unique(rawdata1$euribor3m)
 unique(rawdata1$nr.employed)
 #타겟 – 마케팅 성공 여부
 unique(rawdata1$target)
+
+### 트레이닝 테스트 나누기(7:3)
+set.seed(2020)
+newdata <- rawdata1
+datatotal <- sort(sample(nrow(newdata), nrow(newdata)*0.7))
+train <- newdata[datatotal,]
+test <- newdata[-datatotal,]
