@@ -55,3 +55,13 @@ newdata <- rawdata1
 datatotal <- sort(sample(nrow(newdata), nrow(newdata)*0.7))
 train <- newdata[datatotal,]
 test <- newdata[-datatotal,]
+
+## 로지스틱 
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_fit <- train(target ~ ., 
+                   data = train, 
+                   method = "glm", 
+                   trControl = ctrl, 
+                   metric="Accuracy")
+
+logit_fit
