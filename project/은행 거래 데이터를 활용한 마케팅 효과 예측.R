@@ -79,3 +79,6 @@ logit_boost_fit <- train(target ~ .,
 
 logit_boost_fit
 plot(logit_boost_fit)
+
+logit_boost_pred <- predict(logit_boost_fit, newdata=test)
+confusionMatrix(logit_boost_pred, test$target)
