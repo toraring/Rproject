@@ -82,3 +82,13 @@ plot(logit_boost_fit)
 
 logit_boost_pred <- predict(logit_boost_fit, newdata=test)
 confusionMatrix(logit_boost_pred, test$target)
+
+## 로지스틱 모형 트리
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_tree_fit <- train(target ~ ., 
+                        data = train, 
+                        method = "LMT", 
+                        trControl = ctrl, 
+                        metric="Accuracy")
+logit_tree_fit
+plot(logit_tree_fit)
