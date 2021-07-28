@@ -106,3 +106,6 @@ logit_plr_fit <- train(target ~ .,
 
 logit_plr_fit 
 plot(logit_plr_fit)
+
+logit_plr_pred <- predict(logit_plr_fit, newdata=test)
+confusionMatrix(logit_plr_pred, test$target)
