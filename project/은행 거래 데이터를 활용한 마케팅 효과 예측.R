@@ -68,3 +68,14 @@ logit_fit
 
 logit_pred <- predict(logit_fit, newdata=test)
 confusionMatrix(logit_pred, test$target)
+
+## Logit Boost 로지스틱 
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_boost_fit <- train(target ~ ., 
+                         data = train, 
+                         method = "LogitBoost", 
+                         trControl = ctrl, 
+                         metric="Accuracy")
+
+logit_boost_fit
+plot(logit_boost_fit)
