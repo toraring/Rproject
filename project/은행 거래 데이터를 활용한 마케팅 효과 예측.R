@@ -92,3 +92,6 @@ logit_tree_fit <- train(target ~ .,
                         metric="Accuracy")
 logit_tree_fit
 plot(logit_tree_fit)
+
+logit_tree_pred <- predict(logit_tree_fit, newdata=test)
+confusionMatrix(logit_tree_pred, test$target)
