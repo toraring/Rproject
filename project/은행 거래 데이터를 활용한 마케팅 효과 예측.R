@@ -95,3 +95,14 @@ plot(logit_tree_fit)
 
 logit_tree_pred <- predict(logit_tree_fit, newdata=test)
 confusionMatrix(logit_tree_pred, test$target)
+
+## penalized 로지스틱 
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_plr_fit <- train(target ~ ., 
+                       data = train, 
+                       method = "plr", 
+                       trControl = ctrl, 
+                       metric="Accuracy")
+
+logit_plr_fit 
+plot(logit_plr_fit)
