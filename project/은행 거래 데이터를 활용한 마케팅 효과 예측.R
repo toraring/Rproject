@@ -119,3 +119,5 @@ logit_reg_fit <- train(target ~ .,
                        metric="Accuracy")
 logit_reg_fit 
 plot(logit_reg_fit)
+logit_reg_pred <- predict(logit_reg_fit, newdata=test)
+confusionMatrix(logit_reg_pred, test$target)
