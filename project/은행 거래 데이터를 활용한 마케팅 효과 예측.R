@@ -121,3 +121,14 @@ logit_reg_fit
 plot(logit_reg_fit)
 logit_reg_pred <- predict(logit_reg_fit, newdata=test)
 confusionMatrix(logit_reg_pred, test$target)
+
+### naive bayes
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+nb_fit <- train(target ~ ., 
+                data = train, 
+                method = "naive_bayes", 
+                trControl = ctrl, 
+                metric="Accuracy")
+
+nb_fit 
+plot(nb_fit)
