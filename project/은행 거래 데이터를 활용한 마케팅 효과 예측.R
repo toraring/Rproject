@@ -109,3 +109,13 @@ plot(logit_plr_fit)
 
 logit_plr_pred <- predict(logit_plr_fit, newdata=test)
 confusionMatrix(logit_plr_pred, test$target)
+
+## Regularized 로지스틱
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+logit_reg_fit <- train(target ~ ., 
+                       data = train, 
+                       method = "regLogistic", 
+                       trControl = ctrl, 
+                       metric="Accuracy")
+logit_reg_fit 
+plot(logit_reg_fit)
