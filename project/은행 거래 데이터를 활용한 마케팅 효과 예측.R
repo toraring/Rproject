@@ -132,3 +132,5 @@ nb_fit <- train(target ~ .,
 
 nb_fit 
 plot(nb_fit)
+nb_pred <- predict(nb_fit, newdata=test)
+confusionMatrix(nb_pred, test$target)
