@@ -145,3 +145,5 @@ rf_fit <- train(target ~ .,
 
 rf_fit
 plot(rf_fit)
+rf_pred <- predict(rf_fit, newdata=test)
+confusionMatrix(rf_pred, test$target)
