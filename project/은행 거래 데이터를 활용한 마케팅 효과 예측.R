@@ -147,3 +147,12 @@ rf_fit
 plot(rf_fit)
 rf_pred <- predict(rf_fit, newdata=test)
 confusionMatrix(rf_pred, test$target)
+
+# 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+svm_linear_fit <- train(target ~ ., 
+                        data = train, 
+                        method = "svmLinear", 
+                        trControl = ctrl, 
+                        metric="Accuracy")
+svm_linear_fit
