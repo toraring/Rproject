@@ -156,3 +156,6 @@ svm_linear_fit <- train(target ~ .,
                         trControl = ctrl, 
                         metric="Accuracy")
 svm_linear_fit
+
+svm_linear_pred <- predict(svm_linear_fit, newdata=test)
+confusionMatrix(svm_linear_pred, test$target)
