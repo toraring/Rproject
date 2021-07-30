@@ -134,3 +134,14 @@ nb_fit
 plot(nb_fit)
 nb_pred <- predict(nb_fit, newdata=test)
 confusionMatrix(nb_pred, test$target)
+
+### Random Forest
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+rf_fit <- train(target ~ ., 
+                data = train, 
+                method = "rf", 
+                trControl = ctrl, 
+                metric="Accuracy")
+
+rf_fit
+plot(rf_fit)
