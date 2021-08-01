@@ -159,3 +159,13 @@ svm_linear_fit
 
 svm_linear_pred <- predict(svm_linear_fit, newdata=test)
 confusionMatrix(svm_linear_pred, test$target)
+
+### 커널 서포트 벡터 머신
+ctrl <- trainControl(method="repeatedcv",repeats = 5)  
+svm_poly_fit <- train(target ~ ., 
+                      data = train, 
+                      method = "svmPoly", 
+                      trControl = ctrl, 
+                      metric="Accuracy")
+svm_poly_fit
+plot(svm_poly_fit)
