@@ -172,3 +172,4 @@ plot(svm_poly_fit)
 
 svm_poly_pred <- predict(svm_poly_fit, newdata=test)
 confusionMatrix(svm_poly_pred, test$target)
+ 
