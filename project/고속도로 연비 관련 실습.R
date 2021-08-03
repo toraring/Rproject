@@ -4,3 +4,7 @@ mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
 mpg_new <- mpg # 복사본 만들기
 
 #Q2. 복사본 데이터를 이용해서 cty는 city로, hwy는 highway로 변수명을 수정하세요.
+mpg_new <- rename(mpg_new, city = cty) 
+# cty 를 city 로 수정
+mpg_new <- rename(mpg_new, highway = hwy) 
+# hwy 를 highway 로 수정
