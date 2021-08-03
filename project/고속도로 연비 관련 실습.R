@@ -8,3 +8,5 @@ mpg_new <- rename(mpg_new, city = cty)
 # cty 를 city 로 수정
 mpg_new <- rename(mpg_new, highway = hwy) 
 # hwy 를 highway 로 수정
+
+#Q3. 데이터 일부를 출력해서 변수명이 바뀌었는지 확인해 보세요. 아래와 같은 결과물이 출력되어야 합니다.
