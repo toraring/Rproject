@@ -31,3 +31,7 @@ mean(mpg_toyota$cty) # toyota 의 cty 평균
 ## [1] 18.52941
 
 #Q3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 합니다. 이 회사들의 자동차를 추출한 뒤 hwy 전체 평균을 구해보세요.
+# manufacturer 가 chevrolet, ford, honda 에 해당하면 추출
+mpg_new <- mpg %>% filter(manufacturer %in% c("chevrolet", "ford", "honda"))
+mean(mpg_new$hwy)
+## [1] 22.50943
