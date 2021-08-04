@@ -21,3 +21,5 @@ mean(mpg_a$hwy) # displ 4 이하 hwy 평균
 ## [1] 25.96319
 mean(mpg_b$hwy) # displ 5 이상 hwy 평균
 ## [1] 18.07895
+
+#Q2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 합니다. "audi"와 "toyota" 중 어느 manufacturer(자동차 제조 회사)의 cty(도시 연비)가 평균적으로 더 높은지 알아보세요.
