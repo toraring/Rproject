@@ -29,3 +29,5 @@ mean(mpg_audi$cty) # audi 의 cty 평균
 ## [1] 17.61111
 mean(mpg_toyota$cty) # toyota 의 cty 평균
 ## [1] 18.52941
+
+#Q3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 합니다. 이 회사들의 자동차를 추출한 뒤 hwy 전체 평균을 구해보세요.
