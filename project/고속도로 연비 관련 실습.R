@@ -23,3 +23,9 @@ mean(mpg_b$hwy) # displ 5 이상 hwy 평균
 ## [1] 18.07895
 
 #Q2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 합니다. "audi"와 "toyota" 중 어느 manufacturer(자동차 제조 회사)의 cty(도시 연비)가 평균적으로 더 높은지 알아보세요.
+mpg_audi <- mpg %>% filter(manufacturer == "audi") # audi 추출
+mpg_toyota <- mpg %>% filter(manufacturer == "toyota") # toyota 추출
+mean(mpg_audi$cty) # audi 의 cty 평균
+## [1] 17.61111
+mean(mpg_toyota$cty) # toyota 의 cty 평균
+## [1] 18.52941
