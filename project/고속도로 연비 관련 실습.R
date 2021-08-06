@@ -35,3 +35,5 @@ mean(mpg_toyota$cty) # toyota 의 cty 평균
 mpg_new <- mpg %>% filter(manufacturer %in% c("chevrolet", "ford", "honda"))
 mean(mpg_new$hwy)
 ## [1] 22.50943
+
+#[고속도로 연비 관련 실습3]
