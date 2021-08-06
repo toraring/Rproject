@@ -44,3 +44,11 @@ df <- mpg %>% select(class, cty) # class, cty 변수 추출
 head(df) # df 일부 출력
 
 #Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 class(자동차 종류)가 "suv"인 자동차와  compact"인 자동차 중 어떤 자동차의 cty(도시 연비)가 더 높은지 알아보세요.
+df_suv <- df %>% filter(class == "suv") # class 가 suv 인 행 추출
+df_compact <- df %>% filter(class == "compact") # class 가 compact 인 행 추출
+
+mean(df_suv$cty) # suv 의 cty 평균
+## [1] 13.5
+
+mean(df_compact$cty) # compact 의 cty 평균
+## [1] 20.12766
