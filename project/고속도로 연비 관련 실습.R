@@ -38,3 +38,7 @@ mean(mpg_new$hwy)
 
 #[고속도로 연비 관련 실습3]
 #Q1. mpg 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. mpg 데이터에서 class(자동차 종류), cty(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요.
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+
+df <- mpg %>% select(class, cty) # class, cty 변수 추출
+head(df) # df 일부 출력
