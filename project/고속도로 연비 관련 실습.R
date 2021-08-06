@@ -42,3 +42,5 @@ mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
 
 df <- mpg %>% select(class, cty) # class, cty 변수 추출
 head(df) # df 일부 출력
+
+#Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 class(자동차 종류)가 "suv"인 자동차와  compact"인 자동차 중 어떤 자동차의 cty(도시 연비)가 더 높은지 알아보세요.
