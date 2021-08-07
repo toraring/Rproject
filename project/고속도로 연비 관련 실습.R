@@ -52,3 +52,5 @@ mean(df_suv$cty) # suv 의 cty 평균
 
 mean(df_compact$cty) # compact 의 cty 평균
 ## [1] 20.12766
+
+#[고속도로 연비 관련 실습4]
