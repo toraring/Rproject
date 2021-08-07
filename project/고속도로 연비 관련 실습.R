@@ -55,3 +55,9 @@ mean(df_compact$cty) # compact 의 cty 평균
 
 #[고속도로 연비 관련 실습4]
 #Q. audi에서 생산한 차 중 1~5위 자동차 데이터 출력하시오
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기 
+mpg %>% filter(manufacturer == "audi") %>% # audi 추출
+  arrange(desc(hwy)) %>% # hwy 내림차순 정렬
+  head(5) # 5행까지 출력
+
+
