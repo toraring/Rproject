@@ -63,3 +63,6 @@ mpg %>% filter(manufacturer == "audi") %>% # audi 추출
 
 #[고속도로 연비 관련 실습5]
 #Q1. mpg 데이터 복사본을 만들고, cty와 hwy를 더한 '합산 연비 변수'를 추가하세요.
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+mpg_new <- mpg # 복사본 만들기
+mpg_new <- mpg_new %>% mutate(total = cty + hwy) # 합산 변수 만들기
