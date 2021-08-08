@@ -68,3 +68,4 @@ mpg_new <- mpg # 복사본 만들기
 mpg_new <- mpg_new %>% mutate(total = cty + hwy) # 합산 변수 만들기
 
 #Q2. 앞에서 만든 '합산 연비 변수'를 2로 나눠 '평균 연비 변수'를 추가세요.
+mpg_new <- mpg_new %>% mutate(mean = total/2) # 평균 변수 만들기
