@@ -61,3 +61,5 @@ mpg %>% filter(manufacturer == "audi") %>% # audi 추출
   head(5) # 5행까지 출력
 
 
+#[고속도로 연비 관련 실습5]
+#Q1. mpg 데이터 복사본을 만들고, cty와 hwy를 더한 '합산 연비 변수'를 추가하세요.
