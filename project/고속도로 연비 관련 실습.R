@@ -71,3 +71,6 @@ mpg_new <- mpg_new %>% mutate(total = cty + hwy) # 합산 변수 만들기
 mpg_new <- mpg_new %>% mutate(mean = total/2) # 평균 변수 만들기
 
 #Q3. '평균 연비 변수'가 가장 높은 자동차 3종의 데이터를 출력하세요.
+mpg_new %>%
+  arrange(desc(mean)) %>% # 내림차순 정렬
+  head(3) # 상위 3 행 출력
