@@ -76,4 +76,9 @@ mpg_new %>%
   head(3) # 상위 3 행 출력
 
 #Q4. 1~3번 문제를 해결할 수 있는 하나로 연결된 dplyr 구문을 만들어 출력하세요. 데이터는 복사본 대신 mpg 원본을 이용하세요.
+mpg %>%
+  mutate(total = cty + hwy, # 합산 변수 만들기
+         mean = total/2) %>% # 평균 변수 만들기
+  arrange(desc(mean)) %>% # 내림차순 정렬
+  head(3) # 상위 3 행 출력
 
