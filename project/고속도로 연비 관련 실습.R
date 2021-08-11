@@ -92,3 +92,7 @@ mpg %>%
   summarise(mean_cty = mean(cty)) # cty 평균 구하기
 
 #Q2. 앞 문제의 출력 결과는 class 값 알파벳 순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 높은지 쉽게 알아볼 수 있도록 cty 평균이 높은 순으로 정렬해 출력하세요.
+mpg %>%
+  group_by(class) %>% # class 별 분리
+  summarise(mean_cty = mean(cty)) %>% # cty 평균 구하기
+  arrange(desc(mean_cty)) # 내림차순 정렬하기
