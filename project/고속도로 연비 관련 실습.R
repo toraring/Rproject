@@ -96,3 +96,5 @@ mpg %>%
   group_by(class) %>% # class 별 분리
   summarise(mean_cty = mean(cty)) %>% # cty 평균 구하기
   arrange(desc(mean_cty)) # 내림차순 정렬하기
+
+#Q3. 어떤 회사 자동차의 hwy(고속도로 연비)가 가장 높은지 알아보려고 합니다. hwy 평균이 가장 높은 회사 세 곳을 출력하세요.
