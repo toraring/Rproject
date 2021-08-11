@@ -85,3 +85,9 @@ mpg %>%
 
 #[고속도로 연비 관련 실습6]
 #Q1. mpg 데이터의 class는 "suv", "compact" 등 자동차를 특징에 따라 일곱 종류로 분류한 변수입니다.어떤 차종의 연비가 높은지 비교해보려고 합니다. class별 cty 평균을 구해보세요.
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+
+mpg %>%
+  group_by(class) %>% # class 별 분리
+  summarise(mean_cty = mean(cty)) # cty 평균 구하기
+
