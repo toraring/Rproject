@@ -103,3 +103,5 @@ mpg %>%
   summarise(mean_hwy = mean(hwy)) %>% # hwy 평균 구하기
   arrange(desc(mean_hwy)) %>% # 내림차순 정렬하기
   head(3) # 상위 3 행 출력
+
+#Q4. 어떤 회사에서 "compact"(경차) 차종을 가장 많이 생산하는지 알아보려고 합니다. 각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
