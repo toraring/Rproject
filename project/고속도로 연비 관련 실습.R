@@ -105,3 +105,8 @@ mpg %>%
   head(3) # 상위 3 행 출력
 
 #Q4. 어떤 회사에서 "compact"(경차) 차종을 가장 많이 생산하는지 알아보려고 합니다. 각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
+mpg %>%
+  filter(class == "compact") %>% # compact 추출
+  group_by(manufacturer) %>% # manufacturer 별 분리
+  summarise(count = n()) %>% # 빈도 구하기
+  arrange(desc(count)) # 내림차순 정렬
