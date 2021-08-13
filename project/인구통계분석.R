@@ -9,3 +9,6 @@ str(midwest)
 summary(midwest)
 
 #문제2. poptotal(전체 인구)을 total로, popasian(아시아 인구)을 asian으로 변수명을 수정하세요.
+library(dplyr)
+midwest <- rename(midwest, total = poptotal)
+midwest <- rename(midwest, asian = popasian)
