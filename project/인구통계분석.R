@@ -18,3 +18,6 @@ midwest$ratio <- midwest$asian/midwest$total*100
 hist(midwest$ratio)
 
 #문제4. 아시아 인구 백분율 전체 평균을 구하고, 평균을 초과하면 "large", 그 외에는 "small"을 부여하는 파생변수를 만들어 보세요.
+mean(midwest$ratio)
+## [1] 0.4872462
+midwest$group <- ifelse(midwest$ratio > 0.4872462, "large", "small")
