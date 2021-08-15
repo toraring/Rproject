@@ -16,3 +16,5 @@ midwest <- rename(midwest, asian = popasian)
 #문제3. total, asian 변수를 이용해 '전체 인구 대비 아시아 인구 백분율' 파생변수를 만들고, 히스토그램을 만들어 도시들이 어떻게 분포하는지 살펴보세요.
 midwest$ratio <- midwest$asian/midwest$total*100
 hist(midwest$ratio)
+
+#문제4. 아시아 인구 백분율 전체 평균을 구하고, 평균을 초과하면 "large", 그 외에는 "small"을 부여하는 파생변수를 만들어 보세요.
