@@ -23,3 +23,8 @@ mean(midwest$ratio)
 midwest$group <- ifelse(midwest$ratio > 0.4872462, "large", "small")
 
 #문제5. "large"와 "small"에 해당하는 지역이 얼마나 되는지, 빈도표와 빈도 막대 그래프를 만들어 확인해보세요
+table(midwest$group)
+
+## large small
+## 119 318
+qplot(midwest$group)
