@@ -5,3 +5,5 @@ fuel <- data.frame(fl = c("c", "d", "e", "p", "r"),
                    stringsAsFactors = F)
 fuel # 출력
 #Q1. mpg 데이터에는 연료 종류를 나타낸 fl 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. 위에서 만든 fuel 데이터를 이용해서 mpg 데이터에 price_fl(연료 가격) 변수를 추가하세요.
+mpg <- as.data.frame(ggplot2::mpg) # mpg 데이터 불러오기
+mpg <- left_join(mpg, fuel, by = "fl") # mpg 에 연료 가격 변수 추가
