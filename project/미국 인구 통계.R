@@ -8,3 +8,7 @@ midwest <- midwest %>%
   mutate(ratio_child = (poptotal-popadults)/poptotal*100)
 
 #문제2. 미성년 인구 백분율이 가장 높은 상위 5개 county(지역)의 미성년 인구 백분율을 출력하세요.
+midwest %>%
+  arrange(desc(ratio_child)) %>% # ratio_child 내림차순 정렬
+  select(county, ratio_child) %>% # county, ratio_child 추출
+  head(5) # 상위 5 행 출력
