@@ -14,3 +14,12 @@ midwest %>%
   head(5) # 상위 5 행 출력
 
 #문제3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
+# midwest 에 grade 변수 추가
+midwest <- midwest %>%
+  mutate(grade = ifelse(ratio_child >= 40, "large",
+                        ifelse(ratio_child >= 30, "middle", "small")))
+
+# 미성년 비율 등급 빈도표
+table(midwest$grade)
+## large middle small
+## 32 396 9
