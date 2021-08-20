@@ -12,3 +12,5 @@ midwest %>%
   arrange(desc(ratio_child)) %>% # ratio_child 내림차순 정렬
   select(county, ratio_child) %>% # county, ratio_child 추출
   head(5) # 상위 5 행 출력
+
+#문제3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
