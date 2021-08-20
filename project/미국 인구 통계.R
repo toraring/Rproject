@@ -6,3 +6,5 @@ midwest <- as.data.frame(ggplot2::midwest)
 # midwest 에 백분율 변수 추가
 midwest <- midwest %>%
   mutate(ratio_child = (poptotal-popadults)/poptotal*100)
+
+#문제2. 미성년 인구 백분율이 가장 높은 상위 5개 county(지역)의 미성년 인구 백분율을 출력하세요.
