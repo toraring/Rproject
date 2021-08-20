@@ -25,3 +25,9 @@ table(midwest$grade)
 ## 32 396 9
 
 #문제4. popasian은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' 변수를 추가하고, 하위 10개 지역의 state(주), county(지역명), 아시아인 인구 백분율을 출력하세요.
+
+midwest %>%
+  mutate(ratio_asian = (popasian/poptotal)*100) %>% # 백분율 변수 추가
+  arrange(ratio_asian) %>% # 내림차순 정렬
+  select(state, county, ratio_asian) %>% # 변수 추출
+  head(10) # 상위 10 행 출력
