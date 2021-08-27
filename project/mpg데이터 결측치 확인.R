@@ -11,3 +11,7 @@ table(is.na(mpg$hwy)) # hwy 결측치 빈도표 출력
 ## 229 5
 
 #Q2. filter()를 이용해 hwy 변수의 결측치를 제외하고, 어떤 구동방식의 hwy 평균이 높은지 알아보세요. 하나의 dplyr 구문으로 만들어야 합니다.
+mpg %>%
+  filter(!is.na(hwy)) %>% # 결측치 제외
+  group_by(drv) %>% # drv 별 분리
+  summarise(mean_hwy = mean(hwy)) # hwy 평균 구하기
