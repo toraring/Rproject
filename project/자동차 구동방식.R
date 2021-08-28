@@ -1,3 +1,10 @@
 #[자동차 구동방식]
 #Q1. drv에 이상치가 있는지 확인하세요. 이상치를 결측 처리한 다음 이상치가 사라졌는지 확인하세요. 결측처리 할 때는 %in% 기호를 활용하세요.
- 
+# 이상치 확인
+table(mpg$drv)
+
+# drv 가 4, f, r 이면 기존 값 유지, 그 외 NA 할당
+
+mpg$drv <- ifelse(mpg$drv %in% c("4", "f", "r"), mpg$drv, NA)
+# 이상치 확인
+table(mpg$drv)
