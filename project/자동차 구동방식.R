@@ -8,3 +8,5 @@ table(mpg$drv)
 mpg$drv <- ifelse(mpg$drv %in% c("4", "f", "r"), mpg$drv, NA)
 # 이상치 확인
 table(mpg$drv)
+
+#Q2. 상자 그림을 이용해서 cty에 이상치가 있는지 확인하세요. 상자 그림의 통계치를 이용해 정상 범위를 벗어난 값을 결측 처리한 후 다시 상자 그림을 만들어 이상치가 사라졌는지 확인하세요.
