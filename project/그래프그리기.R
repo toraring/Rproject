@@ -17,3 +17,10 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point()
 3. 축 범위를 조정하는 설정 추가하기
 # x 축 범위 3~6 으로 지정
 ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point() + xlim(3, 6)
+
+3. 축 범위를 조정하는 설정 추가하기
+# x 축 범위 3~6, y 축 범위 10~30 으로 지정
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  xlim(3, 6) +
+  ylim(10, 30)
