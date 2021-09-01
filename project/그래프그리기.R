@@ -24,3 +24,14 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   xlim(3, 6) +
   ylim(10, 30)
+
+#ggplot
+ggplot2 코드 가독성 높이기
+• 한 줄로 작성
+ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point() + xlim(3, 6) + ylim(10, 30)
+
+• + 뒤에서 줄 바꾸기
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  xlim(3, 6) +
+  ylim(10, 30)
