@@ -35,3 +35,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   xlim(3, 6) +
   ylim(10, 30)
+
+#ggplot() vs qplot()
+#• qplot() : 전처리 단계 데이터 확인용 문법 간단, 기능 단순
+#• ggplot() : 최종 보고용. 색, 크기, 폰트 등 세부 조작 가능
