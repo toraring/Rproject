@@ -44,7 +44,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 #[## 막대 그래프 - 집단 간 차이 표현하기]
 #- 막대 그래프(Bar Chart) : 데이터의 크기를 막대의 길이로 표현한 그래프
 #- 성별 소득 차이처럼 집단 간 차이를 표현할 때 주로 사용
-1. 집단별 평균표 만들기
+#1. 집단별 평균표 만들기
 library(dplyr)
 
 df_mpg <- mpg %>%
@@ -52,3 +52,6 @@ df_mpg <- mpg %>%
   summarise(mean_hwy = mean(hwy))
 
 df_mpg
+
+#2. 그래프 생성하기
+ggplot(data = df_mpg, aes(x = drv, y = mean_hwy)) + geom_col()
