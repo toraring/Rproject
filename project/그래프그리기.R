@@ -57,3 +57,11 @@ df_mpg
 ggplot(data = df_mpg, aes(x = drv, y = mean_hwy)) + geom_col()
 #크기 순으로 정렬하기
 ggplot(data = df_mpg, aes(x = reorder(drv, -mean_hwy), y = mean_hwy)) + geom_col()
+
+#> 막대 그래프 2 - 빈도 막대 그래프
+#값의 개수(빈도)로 막대의 길이를 표현한 그래프
+# x 축 범주 변수, y 축 빈도
+ggplot(data = mpg, aes(x = drv)) + geom_bar()
+
+# x 축 연속 변수, y 축 빈도
+ggplot(data = mpg, aes(x = hwy)) + geom_bar()
