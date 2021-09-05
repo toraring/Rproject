@@ -65,3 +65,7 @@ ggplot(data = mpg, aes(x = drv)) + geom_bar()
 
 # x 축 연속 변수, y 축 빈도
 ggplot(data = mpg, aes(x = hwy)) + geom_bar()
+
+#[geom_col() VS geom_bar()]
+#• 평균 막대 그래프 : 데이터를 요약한 평균표를 먼저 만든 후 평균표를 이용해 그래프 생성 - geom_col()
+#• 빈도 막대 그래프 : 별도로 표를 만들지 않고 원자료를 이용해 바로 그래프 생성 - geom_bar()
