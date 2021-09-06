@@ -77,3 +77,7 @@ ggplot(data = mpg, aes(x = hwy)) + geom_bar()
 
 #[시계열 그래프 만들기]
 ggplot(data = economics, aes(x = date, y = unemploy)) + geom_line()
+
+## 상자 그림 - 집단 간 분포 차이 표현하기
+#- 상자 그림(Box Plot) : 데이터의 분포(퍼져 있는 형태)를 직사각형 상자 모양으로 표현한 그래프
+#- 분포를 알 수 있기 때문에 평균만 볼 때보다 데이터의 특성을 좀 더 자세히 이해할 수 있음
