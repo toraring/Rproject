@@ -13,3 +13,14 @@ df
 is.na(df) # 결측치 확인
 
 table(is.na(df)) # 결측치 빈도 출력
+
+#변수별로 결측치 확인하기
+table(is.na(df$sex)) # sex 결측치 빈도 출력
+##
+## FALSE TRUE
+## 4 1
+
+table(is.na(df$score)) # score 결측치 빈도 출력
+##
+## FALSE TRUE
+## 4 1
