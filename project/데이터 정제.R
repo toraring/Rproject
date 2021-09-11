@@ -24,3 +24,10 @@ table(is.na(df$score)) # score 결측치 빈도 출력
 ##
 ## FALSE TRUE
 ## 4 1
+
+#결측치 포함된 상태로 분석
+mean(df$score) # 평균 산출
+## [1] NA
+
+sum(df$score) # 합계 산출
+## [1] NA
