@@ -39,3 +39,11 @@ df %>% filter(is.na(score)) # score 가 NA 인 데이터만 출력
 ## 1 F NA
 
 df %>% filter(!is.na(score)) # score 결측치 제거
+
+#결측치 제외한 데이터로 분석하기
+df_nomiss <- df %>% filter(!is.na(score)) # score 결측치 제거
+mean(df_nomiss$score) # score 평균 산출
+## [1] 4
+
+sum(df_nomiss$score) # score 합계 산출
+## [1] 16
