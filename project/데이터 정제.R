@@ -51,4 +51,7 @@ sum(df_nomiss$score) # score 합계 산출
 #여러 변수 동시에 결측치 없는 데이터 추출하기
 # score, sex 결측치 제외
 df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
+#결측치가 하나라도 있으면 제거하기
+df_nomiss2 <- na.omit(df) # 모든 변수에 결측치 없는 데이터 추출
+df_nomiss2 # 출력
 df_nomiss
