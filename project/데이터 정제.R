@@ -55,3 +55,5 @@ df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
 df_nomiss2 <- na.omit(df) # 모든 변수에 결측치 없는 데이터 추출
 df_nomiss2 # 출력
 df_nomiss
+#- 분석에 필요한 데이터까지 손실 될 가능성 유의
+#- ex) 성별-소득 관계 분석하는데 지역 결측치까지 제거
