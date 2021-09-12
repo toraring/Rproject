@@ -47,3 +47,8 @@ mean(df_nomiss$score) # score 평균 산출
 
 sum(df_nomiss$score) # score 합계 산출
 ## [1] 16
+
+#여러 변수 동시에 결측치 없는 데이터 추출하기
+# score, sex 결측치 제외
+df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
+df_nomiss
