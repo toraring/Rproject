@@ -68,3 +68,11 @@ sum(df$score, na.rm = T) # 결측치 제외하고 합계 산출
 exam <- read.csv("csv_exam.csv") # 데이터 불러오기
 exam[c(3, 8, 15), "math"] <- NA # 3, 8, 15 행의 math 에 NA 할당
 
+#• 평균 구하기
+exam %>% summarise(mean_math = mean(math)) # 평균 산출
+## mean_math
+## 1 NA
+
+exam %>% summarise(mean_math = mean(math, na.rm = T)) # 결측치 제외하고 평균 산출
+## mean_math
+## 1 55.23529
