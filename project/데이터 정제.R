@@ -63,3 +63,8 @@ mean(df$score, na.rm = T) # 결측치 제외하고 평균 산출
 ## [1] 4
 sum(df$score, na.rm = T) # 결측치 제외하고 합계 산출
 ## [1] 16
+#summarise()에서 na.rm = T사용하기
+#• 결측치 생성
+exam <- read.csv("csv_exam.csv") # 데이터 불러오기
+exam[c(3, 8, 15), "math"] <- NA # 3, 8, 15 행의 math 에 NA 할당
+
