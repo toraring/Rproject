@@ -80,4 +80,20 @@ exam %>% summarise(mean_math = mean(math, na.rm = T)) # 결측치 제외하고 �
 #다른 함수들에 적용
 exam %>% summarise(mean_math = mean(math, na.rm = T), # 평균 산출
                    sum_math = sum(math, na.rm = T), # 합계 산출
+                   
+
                    median_math = median(math, na.rm = T)) # 중앙값 산출
+
+##평균값으로 결측치 대체하기
+#평균 구하기
+mean(exam$math, na.rm = T) # 결측치 제외하고 math 평균 산출
+## [1] 55.23529
+
+#평균으로 대체하기
+exam$math <- ifelse(is.na(exam$math), 55, exam$math) # math 가 NA 면 55 로 대체
+table(is.na(exam$math)) # 결측치 빈도표 생성
+##
+## FALSE
+## 20
+
+exam # 출력
