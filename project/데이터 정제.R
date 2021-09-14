@@ -76,3 +76,8 @@ exam %>% summarise(mean_math = mean(math)) # 평균 산출
 exam %>% summarise(mean_math = mean(math, na.rm = T)) # 결측치 제외하고 평균 산출
 ## mean_math
 ## 1 55.23529
+
+#다른 함수들에 적용
+exam %>% summarise(mean_math = mean(math, na.rm = T), # 평균 산출
+                   sum_math = sum(math, na.rm = T), # 합계 산출
+                   median_math = median(math, na.rm = T)) # 중앙값 산출
