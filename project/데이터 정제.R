@@ -107,3 +107,6 @@ outlier <- data.frame(sex = c(1, 2, 1, 3, 2, 1),
                       score = c(5, 4, 3, 4, 2, 6))
 
 outlier
+#이상치 확인하기
+table(outlier$sex)
+table(outlier$score)
