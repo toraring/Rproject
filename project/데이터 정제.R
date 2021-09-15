@@ -102,3 +102,8 @@ mean(exam$math) # math 평균 산출
 
 #[이창치 제거]
 #논리적으로 존재할 수 없으므로 바로 결측 처리 후 분석시 제외
+#이상치 포함된 데이터 생성 - sex 3, score 6
+outlier <- data.frame(sex = c(1, 2, 1, 3, 2, 1),
+                      score = c(5, 4, 3, 4, 2, 6))
+
+outlier
