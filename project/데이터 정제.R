@@ -115,3 +115,9 @@ table(outlier$score)
 # sex 가 3 이면 NA 할당
 outlier$sex <- ifelse(outlier$sex == 3, NA, outlier$sex)
 outlier
+
+#결측치 제외하고 분석
+outlier %>%
+  filter(!is.na(sex) & !is.na(score)) %>%
+  group_by(sex) %>%
+  summarise(mean_score = mean(score))
