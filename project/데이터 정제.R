@@ -110,3 +110,8 @@ outlier
 #이상치 확인하기
 table(outlier$sex)
 table(outlier$score)
+
+#결측 처리하기 - sex
+# sex 가 3 이면 NA 할당
+outlier$sex <- ifelse(outlier$sex == 3, NA, outlier$sex)
+outlier
