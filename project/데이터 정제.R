@@ -126,3 +126,5 @@ outlier %>%
 #상자그림 생성
 mpg <- as.data.frame(ggplot2::mpg)
 boxplot(mpg$hwy)
+#상자그림 통계치 출력
+boxplot(mpg$hwy)$stats # 상자그림 통계치 출력
