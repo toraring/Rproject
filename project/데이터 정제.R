@@ -121,3 +121,8 @@ outlier %>%
   filter(!is.na(sex) & !is.na(score)) %>%
   group_by(sex) %>%
   summarise(mean_score = mean(score))
+
+#상자그림으로 극단치 기준 정해서 제거하기
+#상자그림 생성
+mpg <- as.data.frame(ggplot2::mpg)
+boxplot(mpg$hwy)
