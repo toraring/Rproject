@@ -132,3 +132,7 @@ boxplot(mpg$hwy)$stats # 상자그림 통계치 출력
 # 12~37 벗어나면 NA 할당
 mpg$hwy <- ifelse(mpg$hwy < 12 | mpg$hwy > 37, NA, mpg$hwy)
 table(is.na(mpg$hwy))
+#결측치 제외하고 분석하기
+mpg %>%
+  group_by(drv) %>%
+  summarise(mean_hwy = mean(hwy, na.rm = T))
