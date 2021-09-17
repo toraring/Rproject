@@ -128,3 +128,7 @@ mpg <- as.data.frame(ggplot2::mpg)
 boxplot(mpg$hwy)
 #상자그림 통계치 출력
 boxplot(mpg$hwy)$stats # 상자그림 통계치 출력
+#결측 처리하기
+# 12~37 벗어나면 NA 할당
+mpg$hwy <- ifelse(mpg$hwy < 12 | mpg$hwy > 37, NA, mpg$hwy)
+table(is.na(mpg$hwy))
