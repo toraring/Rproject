@@ -21,3 +21,10 @@ raw_welfare <- read.spss("data_spss_Koweps2014.sav", to.data.frame = T)
 
 # 데이터 copy
 welfare <- raw_welfare
+
+#데이터 검토
+dim(welfare)
+str(welfare)
+head(welfare)
+summary(welfare)
+View(welfare)
