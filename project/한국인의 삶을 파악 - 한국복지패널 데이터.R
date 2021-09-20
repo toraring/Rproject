@@ -28,3 +28,8 @@ str(welfare)
 head(welfare)
 summary(welfare)
 View(welfare)
+#변수명
+welfare <- rename(welfare,
+                  sex = h0901_4, # 성별
+                  birth = h0901_5, # 태어난 연도
+                  income = h09_din) # 소득
