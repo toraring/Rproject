@@ -14,3 +14,10 @@ install.packages("foreign")
 library(foreign)
 library(dplyr)
 library(ggplot2)
+
+#데이터 불러오기
+# 복지패널데이터 로드
+raw_welfare <- read.spss("data_spss_Koweps2014.sav", to.data.frame = T)
+
+# 데이터 copy
+welfare <- raw_welfare
