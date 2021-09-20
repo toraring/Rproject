@@ -6,3 +6,11 @@
 #• 분석2: 나이와 소득의 관계
 #• 분석3: 연령대에 따른 소득
 #• 분석4: 연령대 및 성별에 따른 소득
+
+#foreign 패키지 설치
+install.packages("foreign")
+
+#패키지 로드
+library(foreign)
+library(dplyr)
+library(ggplot2)
