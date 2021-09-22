@@ -1,4 +1,4 @@
-#프로젝트를 통해 R 프로그래밍에 익숙해지기 1
+#프로젝트를 통해 R 프로그래밍에 익숙해지기 
 ##실전 분석 미션 "한국인의 삶을 파악하라!" - 한국복지패널 데이터
 
 #분석 목표
@@ -33,3 +33,10 @@ welfare <- rename(welfare,
                   sex = h0901_4, # 성별
                   birth = h0901_5, # 태어난 연도
                   income = h09_din) # 소득
+
+#1-1.변수 검토, 수정
+class(welfare$sex)
+## [1] "numeric"
+summary(welfare$sex)
+
+table(welfare$sex)
