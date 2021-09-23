@@ -58,3 +58,11 @@ welfare$sex <- ifelse(welfare$sex == 1, "male", "female")
 table(welfare$sex)
 
 qplot(welfare$sex)
+
+#2-1.변수 검토, 수정
+class(welfare$income)
+## [1] "numeric"
+summary(welfare$income)
+
+qplot(welfare$income)
+qplot(welfare$income) + xlim(0, 10000) # x 축 설정
