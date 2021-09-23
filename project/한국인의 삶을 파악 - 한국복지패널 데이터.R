@@ -81,3 +81,6 @@ sex_income <- welfare %>%
   summarise(mean_income = mean(income))
 
 sex_income
+
+#그래프 생성
+ggplot(data = sex_income, aes(x = sex, y = mean_income)) + geom_col()
