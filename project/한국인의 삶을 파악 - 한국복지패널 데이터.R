@@ -66,3 +66,10 @@ summary(welfare$income)
 
 qplot(welfare$income)
 qplot(welfare$income) + xlim(0, 10000) # x 축 설정
+
+#2-2.정제 - 이상치 확인 및 결측처리
+#• 소득 이상치 : 모름/무응답 없음
+table(is.na(welfare$income))
+##
+## FALSE
+## 7048
