@@ -73,3 +73,11 @@ table(is.na(welfare$income))
 ##
 ## FALSE
 ## 7048
+
+#3.성별 소득 평균 분석
+#성별 소득 평균표 생성
+sex_income <- welfare %>%
+  group_by(sex) %>%
+  summarise(mean_income = mean(income))
+
+sex_income
