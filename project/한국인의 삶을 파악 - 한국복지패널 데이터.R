@@ -84,3 +84,10 @@ sex_income
 
 #그래프 생성
 ggplot(data = sex_income, aes(x = sex, y = mean_income)) + geom_col()
+
+#1-1.태어난 연도 변수 검토
+class(welfare$birth)
+## [1] "numeric"
+
+summary(welfare$birth)
+qplot(welfare$birth)
