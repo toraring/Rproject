@@ -104,3 +104,16 @@ welfare$birth <- ifelse(welfare$birth == 9999, NA, welfare$birth)
 table(is.na(welfare$birth))
 ## FALSE
 ## 7048
+
+1-2.정제 - 이상치 확인 및 결측처리
+• 태어난 연도 이상치 : 모름/무응답=9999
+# 이상치 확인
+summary(welfare$birth)
+
+# 이상치 결측처리
+welfare$birth <- ifelse(welfare$birth == 9999, NA, welfare$birth)
+
+# 결측치 확인
+table(is.na(welfare$birth))
+## FALSE
+## 7048
