@@ -123,3 +123,9 @@ welfare$age <- 2014-welfare$birth+1
 summary(welfare$age)
 
 qplot(welfare$age)
+
+#나이별 소득 평균 분석
+age_income <- welfare %>%
+  group_by(age) %>%
+  summarise(mean_income = mean(income))
+age_income
