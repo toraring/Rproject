@@ -129,3 +129,6 @@ age_income <- welfare %>%
   group_by(age) %>%
   summarise(mean_income = mean(income))
 age_income
+
+#그래프 생성 - 산점도
+ggplot(data = age_income, aes(x = age, y = mean_income)) + geom_point()
