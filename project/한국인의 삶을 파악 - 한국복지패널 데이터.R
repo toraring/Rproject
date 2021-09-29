@@ -132,3 +132,11 @@ age_income
 
 #그래프 생성 - 산점도
 ggplot(data = age_income, aes(x = age, y = mean_income)) + geom_point()
+
+#1-1.연령대 변수 생성
+welfare <- welfare %>%
+  mutate(ageg = ifelse(age < 30, "young",
+                       ifelse(age <= 59, "middle", "old")))
+table(welfare$ageg)
+
+qplot(welfare$ageg)
