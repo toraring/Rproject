@@ -152,3 +152,10 @@ welfare_income
 
 #그래프 만들기
 ggplot(data = welfare_income, aes(x = ageg, y = mean_income)) + geom_col()
+
+#1.연령대 및 성별 소득 평균표 생성
+sex_income <- welfare %>%
+filter(ageg != "young") %>%
+  group_by(ageg, sex) %>%
+  summarise(mean_income = mean(income))
+sex_income
