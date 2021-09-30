@@ -149,3 +149,6 @@ welfare_income <- welfare %>%
   summarise(mean_income = mean(income))
 
 welfare_income
+
+#그래프 만들기
+ggplot(data = welfare_income, aes(x = ageg, y = mean_income)) + geom_col()
