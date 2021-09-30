@@ -140,3 +140,12 @@ welfare <- welfare %>%
 table(welfare$ageg)
 
 qplot(welfare$ageg)
+
+#연령대별 소득 평균표 생성
+#• 초년 빈도 적으므로 제외
+welfare_income <- welfare %>%
+  filter(ageg != "young") %>%
+  group_by(ageg) %>%
+  summarise(mean_income = mean(income))
+
+welfare_income
