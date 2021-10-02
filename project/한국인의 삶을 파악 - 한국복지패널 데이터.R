@@ -159,3 +159,7 @@ filter(ageg != "young") %>%
   group_by(ageg, sex) %>%
   summarise(mean_income = mean(income))
 sex_income
+
+#2.그래프 만들기
+ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill = sex)) +
+  geom_col()
