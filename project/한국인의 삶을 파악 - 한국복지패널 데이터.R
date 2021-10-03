@@ -163,3 +163,5 @@ sex_income
 #2.그래프 만들기
 ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill = sex)) +
   geom_col()
+ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill = sex)) +
+  geom_col(position = "dodge") # position 변경(기본값 = "stack")
