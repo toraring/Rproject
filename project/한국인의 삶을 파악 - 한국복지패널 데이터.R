@@ -164,4 +164,4 @@ sex_income
 ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill = sex)) +
   geom_col()
 ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill = sex)) +
-  geom_col(position = "dodge") # position 변경(기본값 = "stack")
+  geom_col(position = "dodge") # position 변경(기본값 = "stack") 
