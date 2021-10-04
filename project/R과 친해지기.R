@@ -1,0 +1,7 @@
+#R과 친해지기
+#패키지 설치 
+install.packages("dplyr") install.packages("ggplot2")
+
+#패키지 로드 
+library(dplyr) library(ggplot2)
+
