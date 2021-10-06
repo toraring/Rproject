@@ -10,3 +10,8 @@ head(mpg)
 dim(mpg)
 str(mpg)
 summary(mpg)
+
+#• 1.회사별 평균 연비 높은순 정렬
+mpg %>% 
+  group_by(manufacturer) %>%
+  summarise(mean.hwy=mean(hwy))
