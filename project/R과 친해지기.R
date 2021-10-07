@@ -14,3 +14,9 @@ summary(mpg)
 mpg %>% 
   group_by(manufacturer) %>%
   summarise(mean.hwy=mean(hwy))
+
+#• 2.포드 연비 높은순 정렬
+mpg %>%
+  filter(manufacturer=="ford") %>%
+  group_by(model) %>%
+  arrange(desc(hwy))
