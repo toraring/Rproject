@@ -20,3 +20,7 @@ mpg %>%
   filter(manufacturer=="ford") %>%
   group_by(model) %>%
   arrange(desc(hwy))
+
+#• 3.배기량이 연비에 미치는 영향 회귀분석
+lm.mpg <- lm(data=mpg, hwy ~ displ) # 회귀분석 
+summary(lm.mpg) # 결과 출력
