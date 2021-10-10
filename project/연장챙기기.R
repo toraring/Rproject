@@ -38,3 +38,11 @@ g <- seq(1, 10, by=2)
 # 1~10까지 2씩 증가 
 g 
 ## [1] 1 3 5 7 9
+
+#패키지 로드 안하면 함수 사용 불가 
+b 
+## [1] "a" "a" "b" "c" 
+
+qplot(b) ## Error in qplot(b): could not find function "qplot"
+
+head(mpg)
