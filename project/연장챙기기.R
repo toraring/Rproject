@@ -50,3 +50,18 @@ head(mpg)
 library(ggplot2) 
 qplot(b)
 head(mpg)
+
+#함수 파라미터(parameter) 지정하기 
+# 'x =' x축 
+qplot(data = mpg, x = hwy)
+qplot(data = mpg, x = cty)
+
+# 'geom = ' 그래프 형식 
+qplot(data = mpg, y = hwy, x = drv, geom = "point")
+qplot(data = mpg, y = hwy, x = drv, geom = "boxplot")
+
+# 'colour = ' 색깔 구분 
+qplot(data = mpg, y = hwy, x = drv, geom = "boxplot", colour = drv)
+
+#함수 사용법이 궁금할 땐 
+help ?qplot
