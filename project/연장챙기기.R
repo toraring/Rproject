@@ -46,3 +46,7 @@ b
 qplot(b) ## Error in qplot(b): could not find function "qplot"
 
 head(mpg)
+
+library(ggplot2) 
+qplot(b)
+head(mpg)
