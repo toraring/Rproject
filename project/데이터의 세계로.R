@@ -10,3 +10,15 @@ math
 # 변수 합해서 데이터프레임 만들기 
 df_midterm <- data.frame(history, math) 
 df_midterm
+
+# 반 추가하기 class <- c(1, 1, 2, 2) 
+class 
+## [1] 1 1 2 2 
+
+df_midterm <- data.frame(history, math, class) 
+df_midterm 
+
+mean(dfmidterm$history) 
+## [1] 75 
+mean(df_midterm$math) 
+## [1] 57.5
