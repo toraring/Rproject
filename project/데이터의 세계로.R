@@ -22,3 +22,15 @@ mean(dfmidterm$history)
 ## [1] 75 
 mean(df_midterm$math) 
 ## [1] 57.5
+
+#엑셀 데이터 불러오기
+# readxl 패키지 설치
+install.packages("readxl")
+
+# readxl 패키지 로드 
+library(readxl)
+
+# 엑셀 파일 불러오기 
+df_finalexam <- read_excel("finalexam.xlsx", sheet = 1, col_names = T)
+
+df_finalexam
