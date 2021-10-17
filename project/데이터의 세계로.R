@@ -42,3 +42,7 @@ mean(df_finalexam$history)
 ## [1] 84.9 
 mean(df_finalexam$english) 
 ## [1] 59.45
+
+#col_names 파라미터 
+# 첫번째 행 변수명으로 로드 
+read_excel("finalexam.xlsx", sheet = 1, col_names = T)
