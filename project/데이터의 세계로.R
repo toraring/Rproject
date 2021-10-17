@@ -46,3 +46,6 @@ mean(df_finalexam$english)
 #col_names 파라미터 
 # 첫번째 행 변수명으로 로드 
 read_excel("finalexam.xlsx", sheet = 1, col_names = T)
+
+# 첫번째 행 변수명으로 로드 X 
+read_excel("finalexam.xlsx", sheet = 1, col_names = F)
