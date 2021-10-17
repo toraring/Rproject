@@ -34,3 +34,11 @@ library(readxl)
 df_finalexam <- read_excel("finalexam.xlsx", sheet = 1, col_names = T)
 
 df_finalexam
+
+#[주의] Working directory에 불러올 파일이 있어야 함
+mean(df_finalexam$math) 
+## [1] 57.45 
+mean(df_finalexam$history) 
+## [1] 84.9 
+mean(df_finalexam$english) 
+## [1] 59.45
