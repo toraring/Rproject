@@ -49,3 +49,8 @@ read_excel("finalexam.xlsx", sheet = 1, col_names = T)
 
 # 첫번째 행 변수명으로 로드 X 
 read_excel("finalexam.xlsx", sheet = 1, col_names = F)
+
+#csv 파일 불러오기
+#- 범용 데이터 형식
+#- 값 사이를 쉼표(,)로 구분
+#- 용량 작음, 다양한 소프트웨어에서 사용
