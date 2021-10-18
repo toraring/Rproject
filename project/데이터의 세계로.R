@@ -54,3 +54,4 @@ read_excel("finalexam.xlsx", sheet = 1, col_names = F)
 #- 범용 데이터 형식
 #- 값 사이를 쉼표(,)로 구분
 #- 용량 작음, 다양한 소프트웨어에서 사용
+read.csv("csv_exam.csv", header = T)
