@@ -28,3 +28,8 @@ dim(mpg) # 행, 열 출력
 
 str(mpg) # 데이터 속성 확인
 summary(mpg) # 요약통계량 출력
+
+#dplyr 패키지 설치 & 로드
+install.packages("dplyr") # dplyr 설치
+library(dplyr) # dplyr 로드
+
