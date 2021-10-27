@@ -37,3 +37,7 @@ library(dplyr) # dplyr 로드
 df_raw <- data.frame(var1 = c(1, 2, 1),
                      var2 = c(2, 3, 2))
 df_raw
+
+#1. 데이터 프레임 복사본 만들기
+df_new <- df_raw # 복사본 생성
+df_new # 출력
