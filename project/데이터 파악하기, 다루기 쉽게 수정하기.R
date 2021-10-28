@@ -41,3 +41,7 @@ df_raw
 #1. 데이터 프레임 복사본 만들기
 df_new <- df_raw # 복사본 생성
 df_new # 출력
+
+#2. 변수명 바꾸기
+df_new <- rename(df_new, v2 = var2) # var2 를 v2 로 수정
+df_new
