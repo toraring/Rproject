@@ -45,3 +45,4 @@ df_new # 출력
 #2. 변수명 바꾸기
 df_new <- rename(df_new, v2 = var2) # var2 를 v2 로 수정
 df_new
+#[유의] rename()에 '새 변수명 = 기존 변수명' 순서로 입력
