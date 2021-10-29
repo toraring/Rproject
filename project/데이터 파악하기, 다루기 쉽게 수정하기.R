@@ -46,3 +46,10 @@ df_new # 출력
 df_new <- rename(df_new, v2 = var2) # var2 를 v2 로 수정
 df_new
 #[유의] rename()에 '새 변수명 = 기존 변수명' 순서로 입력
+
+#변수 조합해 파생변수 만들기 
+#데이터 프레임 생성
+df <- data.frame(var1 = c(4, 3, 8),
+                 var2 = c(2, 6, 1)) 
+
+df
