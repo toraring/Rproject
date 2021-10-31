@@ -66,4 +66,10 @@ mpg$total <- (mpg$cty + mpg$hwy)/2 # 통합 연비 변수 생성
 head(mpg)
 
 mean(mpg$total)
+
+#조건문을 활용해 파생변수 만들기
+#1.기준값 정하기
+summary(mpg$total) # 요약 통계량 산출
+
+hist(mpg$total) # 히스토그램 생성
 ## [1] 20.14957
