@@ -73,3 +73,7 @@ summary(mpg$total) # 요약 통계량 산출
 
 hist(mpg$total) # 히스토그램 생성
 ## [1] 20.14957
+
+# 20 이상이면 pass, 그렇지 않으면 fail 부여 
+mpg$test <- ifelse(mpg$total >= 20, "pass", "fail")
+head(mpg, 20) # 데이터 확인
