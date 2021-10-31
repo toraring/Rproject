@@ -60,3 +60,10 @@ df
 
 df$var_mean <- (df$var1 + df$var2)/2 # var_mean 파생변수 생성
 df
+
+#mpg 통합 연비 변수 만들기
+mpg$total <- (mpg$cty + mpg$hwy)/2 # 통합 연비 변수 생성
+head(mpg)
+
+mean(mpg$total)
+## [1] 20.14957
