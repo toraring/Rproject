@@ -77,3 +77,9 @@ hist(mpg$total) # 히스토그램 생성
 # 20 이상이면 pass, 그렇지 않으면 fail 부여 
 mpg$test <- ifelse(mpg$total >= 20, "pass", "fail")
 head(mpg, 20) # 데이터 확인
+
+#3. 빈도표로 합격 판정 자동차 수 살펴보기
+table(mpg$test) # 연비 합격 빈도표 생성
+
+## fail pass
+## 106 128
