@@ -93,3 +93,9 @@ NP # total을 기준으로 A, B, C 등급 부여
 mpg$grade <- ifelse(mpg$total >= 30, "A",
                     ifelse(mpg$total >= 20, "B", "C")) 
 head(mpg, 20) # 데이터 확인
+
+#3. 빈도표로 합격 판정 자동차 수 살펴보기
+table(mpg$test) # 연비 합격 빈도표 생성
+
+## fail pass
+## 106 128
