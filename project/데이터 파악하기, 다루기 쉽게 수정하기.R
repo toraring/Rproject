@@ -109,3 +109,7 @@ head(mpg, 20) # 데이터 확인
 
 ## fail pass
 ## 106 128
+
+#4. 막대 빈도 표현하기
+library(ggplot2) # ggplot2 로드
+qplot(mpg$test) # 연비 합격 빈도 막대 그래프 생성
