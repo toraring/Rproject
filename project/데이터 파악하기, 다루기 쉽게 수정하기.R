@@ -131,3 +131,10 @@ qplot(mpg$grade) # 등급 빈도 막대 그래프 생성
 mpg$grade2 <- ifelse(mpg$total >= 30, "A",
                      ifelse(mpg$total >= 25, "B",
                             ifelse(mpg$total >= 20, "C", "D")))
+
+
+## [정리하기]
+#1.데이터 준비, 패키지 준비
+mpg <- as.data.frame(ggplot2::mpg) # 데이터 불러오기
+library(dplyr) # dplyr 로드
+library(ggplot2) # ggplot2 로드
