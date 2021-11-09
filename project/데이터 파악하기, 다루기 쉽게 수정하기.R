@@ -119,3 +119,10 @@ qplot(mpg$test) # 연비 합격 빈도 막대 그래프 생성
 mpg$grade <- ifelse(mpg$total >= 30, "A",
                     ifelse(mpg$total >= 20, "B", "C")) 
 head(mpg, 20) # 데이터 확인
+
+#빈도표, 막대 그래프로 연비 등급 살펴보기
+table(mpg$grade) # 등급 빈도표 생성
+## A B C
+## 10 118 106
+
+qplot(mpg$grade) # 등급 빈도 막대 그래프 생성
