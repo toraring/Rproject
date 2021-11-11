@@ -138,3 +138,11 @@ mpg$grade2 <- ifelse(mpg$total >= 30, "A",
 mpg <- as.data.frame(ggplot2::mpg) # 데이터 불러오기
 library(dplyr) # dplyr 로드
 library(ggplot2) # ggplot2 로드
+
+# 2.데이터 파악
+head(mpg) # Raw 데이터 앞부분
+tail(mpg) # Raw 데이터 뒷부분
+View(mpg) # Raw 데이터 뷰어창에서 확인
+dim(mpg) # 차원
+str(mpg) # 속성
+summary(mpg) # 요약 통계
