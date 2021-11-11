@@ -146,3 +146,11 @@ View(mpg) # Raw 데이터 뷰어창에서 확인
 dim(mpg) # 차원
 str(mpg) # 속성
 summary(mpg) # 요약 통계
+
+# 3.변수명 수정 
+mpg <- rename(mpg, company = manufacturer) 
+
+# 4.파생변수 생성 
+mpg$total <- (mpg$cty + mpg$hwy)/2 # 변수 조합 
+mpg$test <- ifelse(mpg$total >= 20, "pass", "fail") # 조건문 활용
+
