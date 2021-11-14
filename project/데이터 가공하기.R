@@ -2,3 +2,6 @@
 library(dplyr)
 exam <- read.csv("csv_exam.csv")
 exam
+
+# exam 에서 class 가 1 인 경우만 추출하여 출력
+exam %>% filter(class == 1)
