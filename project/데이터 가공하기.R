@@ -5,3 +5,6 @@ exam
 
 # exam 에서 class 가 1 인 경우만 추출하여 출력
 exam %>% filter(class == 1)
+
+# 2반인 경우만 추출 
+exam %>% filter(class == 2)
