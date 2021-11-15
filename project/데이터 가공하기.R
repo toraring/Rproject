@@ -8,3 +8,9 @@ exam %>% filter(class == 1)
 
 # 2반인 경우만 추출 
 exam %>% filter(class == 2)
+
+# 1반이 아닌 경우 
+exam %>% filter(class != 1)
+
+# 3 반이 아닌 경우
+exam %>% filter(class != 3)
