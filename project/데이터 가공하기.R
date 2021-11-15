@@ -14,3 +14,9 @@ exam %>% filter(class != 1)
 
 # 3 반이 아닌 경우
 exam %>% filter(class != 3)
+
+# 수학 점수가 50점을 초과한 경우 
+exam %>% filter(math > 50)
+
+# 수학 점수가 50 점 미만인 경우
+exam %>% filter(math < 50)
