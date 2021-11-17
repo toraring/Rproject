@@ -26,3 +26,10 @@ exam %>% filter(math < 50)
 
 # 영어점수가 80 점 이하인 경우
 exam %>% filter(english <= 80)
+
+#여러 조건을 충족하는 행 추출하기
+# 1 반 이면서 수학 점수가 50 점 이상인 경우
+exam %>% filter(class == 1 & math >= 50)
+
+# 2반 이면서 영어점수가 80점 이상인 경우 
+exam %>% filter(class == 2 & english >= 80)
