@@ -20,3 +20,9 @@ exam %>% filter(math > 50)
 
 # 수학 점수가 50 점 미만인 경우
 exam %>% filter(math < 50)
+
+# 영어점수가 80점 이상인 경우 
+ㅁexam %>% filter(english >= 80)
+
+# 영어점수가 80 점 이하인 경우
+exam %>% filter(english <= 80)
