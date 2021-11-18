@@ -33,3 +33,6 @@ exam %>% filter(class == 1 & math >= 50)
 
 # 2반 이면서 영어점수가 80점 이상인 경우 
 exam %>% filter(class == 2 & english >= 80)
+
+# 수학 점수가 90 점 이상이거나 영어점수가 90 점 이상인 경우
+exam %>% filter(math >= 90 | english >= 90)
