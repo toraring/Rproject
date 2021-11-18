@@ -39,3 +39,6 @@ exam %>% filter(math >= 90 | english >= 90)
 
 # 영어점수가 90점 미만이거나 과학점수가 50점 미만인 경우
 exam %>% filter(english < 90 | science < 50)
+
+exam %>% filter(class == 1 | class == 3 | class == 5) 
+# 1, 3, 5 반에 해당되면 추출
