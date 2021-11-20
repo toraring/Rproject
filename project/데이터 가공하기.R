@@ -42,3 +42,7 @@ exam %>% filter(english < 90 | science < 50)
 
 exam %>% filter(class == 1 | class == 3 | class == 5) 
 # 1, 3, 5 반에 해당되면 추출
+
+%in% 기호 이용하기 
+exam %>% filter(class %in% c(1,3,5)) 
+# 1, 3, 5 반에 해당하면 추출
