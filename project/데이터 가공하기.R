@@ -65,3 +65,6 @@ mean(class1$math) # 1 반 수학 점수 평균 구하기
 
 mean(class2$math) # 2 반 수학 점수 평균 구하기
 ## [1] 61.25
+
+exam %>% select(math) # math 추출
+exam %>% select(english) # english 추출
