@@ -55,3 +55,13 @@ mean(class1$math) # 1 반 수학 점수 평균 구하기
 mean(class2$math) # 2 반 수학 점수 평균 구하기
 ## [1] 61.25
 # 1, 3, 5 반에 해당하면 추출
+
+#추출한 행으로 데이터 만들기
+class1 <- exam %>% filter(class == 1) # class 가 1 인 행 추출, class1 에 할당
+class2 <- exam %>% filter(class == 2) # class 가 2 인 행 추출, class2 에 할당
+
+mean(class1$math) # 1 반 수학 점수 평균 구하기
+## [1] 46.25
+
+mean(class2$math) # 2 반 수학 점수 평균 구하기
+## [1] 61.25
