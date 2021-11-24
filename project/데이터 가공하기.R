@@ -71,3 +71,6 @@ exam %>% select(english) # english 추출
 
 #여러 변수 추출하기 
 exam %>% select(class, math, english) # class, math, english 변수 추출
+
+# class가 1인 행만 추출한 다음 english 추출 
+exam %>% filter(class == 1) %>% select(english)
