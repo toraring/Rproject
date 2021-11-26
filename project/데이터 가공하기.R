@@ -82,3 +82,7 @@ exam %>%
 
 #여러 변수 추출하기 
 exam %>% select(class, math, english) # class, math, english 변수 추출
+
+#변수 제외하기 
+exam %>% select(-math) # math 제외
+exam %>% select(-math, -english) # math, english 제외
