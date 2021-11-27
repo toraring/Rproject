@@ -86,3 +86,6 @@ exam %>% select(class, math, english) # class, math, english 변수 추출
 #변수 제외하기 
 exam %>% select(-math) # math 제외
 exam %>% select(-math, -english) # math, english 제외
+
+# class가 1인 행만 추출한 다음 english 추출 
+exam %>% filter(class == 1) %>% select(english)
