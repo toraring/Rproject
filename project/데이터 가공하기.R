@@ -89,3 +89,8 @@ exam %>% select(-math, -english) # math, english 제외
 
 # class가 1인 행만 추출한 다음 english 추출 
 exam %>% filter(class == 1) %>% select(english)
+
+#가독성 있게 줄 바꾸기
+exam %>%
+  filter(class == 1) %>% # class 가 1 인 행 추출
+  select(english) # english 추출
