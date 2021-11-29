@@ -94,3 +94,8 @@ exam %>% filter(class == 1) %>% select(english)
 exam %>%
   filter(class == 1) %>% # class 가 1 인 행 추출
   select(english) # english 추출
+
+#일부만 출력하기 
+exam %>% 
+  select(id, math) %>% # id, math 추출 
+  head # 앞부분 6행까지 추출
