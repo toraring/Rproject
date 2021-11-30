@@ -99,3 +99,8 @@ exam %>%
 exam %>% 
   select(id, math) %>% # id, math 추출 
   head # 앞부분 6행까지 추출
+
+#일부만 출력하기
+exam %>%
+  select(id, math) %>% # id, math 추출
+  head(10) # 앞부분 10 행까지 추출
