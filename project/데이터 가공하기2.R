@@ -9,3 +9,9 @@ exam %>% arrange(class, math) # class 및 math 오름차순 정렬
 exam %>% 
   mutate(total = math + english + science) %>% # 총합 변수 추가 
   head # 일부 추출
+
+#여러 파생변수 한 번에 추가하기 
+exam %>% 
+  mutate(total = math + english + science, # 총합 변수 추가 
+         mean = (math + english + science)/3) %>% # 총평균 변수 추가 
+  head # 일부 추출
