@@ -20,3 +20,9 @@ exam %>%
 exam %>%
   mutate(test = ifelse(science >= 60, "pass", "fail")) %>%
   head
+
+#추가한 변수를 dplyr 코드에 바로 활용하기
+exam %>%
+  mutate(total = math + english + science) %>% # 총합 변수 추가
+  arrange(total) %>% # 총합 변수 기준 정렬
+  head # 일부 추출
