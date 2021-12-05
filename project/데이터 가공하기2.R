@@ -37,3 +37,8 @@ exam %>%
   summarise(mean_math = mean(math)) # math 평균 산출
 ## mean_math
 ## 1 57.45
+
+#집단별로 요약하기
+exam %>%
+  group_by(class) %>% # class 별로 분리
+  summarise(mean_math = mean(math)) # math 평균 산출
