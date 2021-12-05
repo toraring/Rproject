@@ -31,3 +31,9 @@ exam %>%
 exam %>%
   mutate(test = ifelse(science >= 60, "pass", "fail")) %>%
   head
+
+#요약하기
+exam %>% 
+  summarise(mean_math = mean(math)) # math 평균 산출
+## mean_math
+## 1 57.45
