@@ -26,3 +26,8 @@ exam %>%
   mutate(total = math + english + science) %>% # 총합 변수 추가
   arrange(total) %>% # 총합 변수 기준 정렬
   head # 일부 추출
+
+#mutate()에 ifelse() 적용하기
+exam %>%
+  mutate(test = ifelse(science >= 60, "pass", "fail")) %>%
+  head
