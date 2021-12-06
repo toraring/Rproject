@@ -42,3 +42,11 @@ exam %>%
 exam %>%
   group_by(class) %>% # class 별로 분리
   summarise(mean_math = mean(math)) # math 평균 산출
+
+#여러 요약통계량 한 번에 산출하기
+exam %>%
+  group_by(class) %>% # class 별로 분리
+  summarise(mean_math = mean(math), # math 평균
+            sum_math = sum(math), # math 합계
+            median_math = median(math), # math 중앙값
+            n = n()) # 학생 수
