@@ -56,3 +56,12 @@ mpg %>%
   group_by(manufacturer, drv) %>% # 회사별, 구방방식별 분리
   summarise(mean_cty = mean(cty)) %>% # cty 평균 산출
   head(10) # 일부 출력
+
+#데이터 생성
+# 중간고사 데이터 생성
+test1 <- data.frame(id = c(1, 2, 3, 4, 5),
+                    midterm = c(60, 80, 70, 90, 85))
+
+# 기말고사 데이터 생성
+test2 <- data.frame(id = c(1, 2, 3, 4, 5),
+                    final = c(70, 83, 65, 95, 80))
