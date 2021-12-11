@@ -51,7 +51,7 @@ exam %>%
             median_math = median(math), # math 중앙값
             n = n()) # 학생 수
 
-#각 집단별로 다시 집단 나누기
+#각 집단별로 다시 집단 나누기 
 mpg %>%
   group_by(manufacturer, drv) %>% # 회사별, 구방방식별 분리
   summarise(mean_cty = mean(cty)) %>% # cty 평균 산출
