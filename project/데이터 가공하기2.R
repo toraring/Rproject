@@ -68,3 +68,7 @@ test2 <- data.frame(id = c(1, 2, 3, 4, 5),
 
 test1 # test1 출력
 test2 # test2 출력
+
+#id 기준으로 합치기
+total <- left_join(test1, test2, by = "id") # id 기준으로 합쳐 total 에 할당
+total # total 출력
