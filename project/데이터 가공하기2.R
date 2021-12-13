@@ -72,3 +72,8 @@ test2 # test2 출력
 #id 기준으로 합치기
 total <- left_join(test1, test2, by = "id") # id 기준으로 합쳐 total 에 할당
 total # total 출력
+
+#반별 담임교사 명단 생성
+name <- data.frame(class = c(1, 2, 3, 4, 5),
+                   teacher = c("kim", "lee", "park", "choi", "jung"))
+name
