@@ -77,3 +77,7 @@ total # total 출력
 name <- data.frame(class = c(1, 2, 3, 4, 5),
                    teacher = c("kim", "lee", "park", "choi", "jung"))
 name
+
+#class 기준 합치기
+exam_new <- left_join(exam, name, by = "class")
+exam_new
