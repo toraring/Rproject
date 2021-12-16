@@ -93,3 +93,7 @@ group_b <- data.frame(id = c(6, 7, 8, 9, 10),
 
 group_a # group_a 출력
 group_b # group_b 출력
+
+#세로로 합치기
+group_all <- bind_rows(group_a, group_b) # 데이터 합쳐서 group_all 에 할당
+group_all # group_all 출력
