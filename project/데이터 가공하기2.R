@@ -101,3 +101,10 @@ group_all # group_all 출력
 #[정리]
 # 1.조건에 맞는 데이터만 추출하기
 exam %>% filter(english >= 80)
+
+## 여러 조건 동시 충족
+exam %>% filter(class == 1 & math >= 50)
+
+# 여러 조건 중 하나 이상 충족
+exam %>% filter(math >= 90 | english >= 90)
+exam %>% filter(class %in% c(1,3,5))
