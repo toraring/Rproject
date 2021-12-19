@@ -97,3 +97,7 @@ group_b # group_b 출력
 #세로로 합치기
 group_all <- bind_rows(group_a, group_b) # 데이터 합쳐서 group_all 에 할당
 group_all # group_all 출력
+
+#[정리]
+# 1.조건에 맞는 데이터만 추출하기
+exam %>% filter(english >= 80)
