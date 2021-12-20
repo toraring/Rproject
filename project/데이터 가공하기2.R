@@ -108,3 +108,7 @@ exam %>% filter(class == 1 & math >= 50)
 # 여러 조건 중 하나 이상 충족
 exam %>% filter(math >= 90 | english >= 90)
 exam %>% filter(class %in% c(1,3,5))
+
+## 2.필요한 변수만 추출하기
+exam %>% select(math)
+exam %>% select(class, math, english)
