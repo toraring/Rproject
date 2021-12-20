@@ -112,3 +112,8 @@ exam %>% filter(class %in% c(1,3,5))
 ## 2.필요한 변수만 추출하기
 exam %>% select(math)
 exam %>% select(class, math, english)
+
+# 3.함수 조합하기, 일부만 출력하기
+exam %>%
+  select(id, math) %>%
+  head(10)
