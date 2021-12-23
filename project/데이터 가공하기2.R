@@ -117,3 +117,8 @@ exam %>% select(class, math, english)
 exam %>%
   select(id, math) %>%
   head(10)
+
+#4.순서대로 정렬하기
+exam %>% arrange(math) # 오름차순 정렬
+exam %>% arrange(desc(math)) # 내림차순 정렬
+exam %>% arrange(class, math) # 여러 변수 기준 오름차순 정렬
